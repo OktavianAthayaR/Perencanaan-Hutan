@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<!-- saved from url=(0190)file:///C:/Users/Aspire%207%20Gaming/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/59B9B53140489055E2C3F99AB88FBEDAC5C858FA/transfers/2026-41/index-4.html -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16312A">
+<meta name="referrer" content="origin">
+<title>Banua Lestari | Sistem Informasi Pengelolaan Hutan Lestari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/css2" rel="stylesheet">
+<link rel="stylesheet" href="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/leaflet.css">
+<style>
+:root{
+  --hutan:#16312A; --hutan2:#1F4036; --lumut:#2F6B4F; --tajuk:#5E9C6B; --kabut:#EAF0EB; --kertas:#FBFCFA;
+  --garis:#D3DDD5; --teks:#1C2B26; --redup:#5D6F66; --gambut:#C27A2C; --bahaya:#B3432F; --baik:#3F8F5B; --sedang:#D9A441;
+  --head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif; --body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--body);color:var(--teks);background:var(--kabut);font-size:15px;line-height:1.55}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.15;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #E3A94B;outline-offset:2px}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.side{background:var(--hutan);color:#DCE8DF;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:22px 16px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='640' viewBox='0 0 260 640' fill='none' stroke='%23ffffff' stroke-opacity='.06' stroke-width='1.2'><path d='M-10 420C50 380 90 470 150 430S230 380 280 440'/><path d='M-10 450C50 410 90 500 150 460S230 410 280 470'/><path d='M-10 480C50 440 90 530 150 490S230 440 280 500'/><path d='M-10 510C50 470 90 560 150 520S230 470 280 530'/><path d='M-10 540C50 500 90 590 150 550S230 500 280 560'/><path d='M-10 570C50 530 90 620 150 580S230 530 280 590'/><path d='M60 640C80 560 130 560 150 500'/></svg>");
+  background-repeat:no-repeat;background-position:bottom}
+.brand{display:flex;gap:12px;align-items:center;padding:0 6px 20px;border-bottom:1px solid rgba(255,255,255,.12)}
+.logo{width:40px;height:40px;flex:none}
+.brand b{font-family:var(--head);font-size:20px;color:#fff;display:block;line-height:1.1}
+.brand small{font-size:11.5px;color:#A9BFB2;display:block;line-height:1.3;margin-top:3px}
+#nav{display:flex;flex-direction:column;gap:2px;margin-top:16px}
+#nav button{display:flex;align-items:center;gap:12px;background:none;border:0;color:#CFE0D4;padding:10px 12px;border-radius:6px;cursor:pointer;text-align:left;font-size:14.5px}
+#nav button svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#nav button:hover{background:rgba(255,255,255,.07)}
+#nav button.on{background:#E9F1EA;color:var(--hutan);font-weight:600}
+.who{margin-top:auto;padding:14px 10px 4px;border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;color:#A9BFB2;line-height:1.5}
+.who b{display:block;color:#fff;font-size:13.5px;font-weight:600}
+.main{min-width:0;padding:28px clamp(16px,3vw,40px) 40px}
+.view{display:none}.view.on{display:block}
+.vhead{margin-bottom:22px;max-width:760px}
+.vhead h1{font-size:clamp(26px,3.4vw,36px)}
+.vhead p{margin:8px 0 0;color:var(--redup)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--garis);background:var(--kertas);border-radius:6px;padding:8px 14px;cursor:pointer;font-weight:500;font-size:14px}
+.btn:hover{border-color:var(--lumut)}
+.btn.primary{background:var(--gambut);border-color:var(--gambut);color:#fff}
+.btn.primary:hover{background:#A8651F}
+.btn.danger{background:var(--bahaya);border-color:var(--bahaya);color:#fff}
+.btn.sm{padding:4px 9px;font-size:13px}
+.btn.ghost{background:transparent}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:28px;background:var(--hutan);color:#E6F0E8;border-radius:10px;padding:clamp(20px,3vw,38px);margin-bottom:22px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='700' height='420' viewBox='0 0 700 420' fill='none' stroke='%23ffffff' stroke-opacity='.05' stroke-width='1.3'><path d='M-20 120C100 60 180 200 320 120S560 40 720 130'/><path d='M-20 150C100 90 180 230 320 150S560 70 720 160'/><path d='M-20 180C100 120 180 260 320 180S560 100 720 190'/><path d='M-20 210C100 150 180 290 320 210S560 130 720 220'/><path d='M-20 240C100 180 180 320 320 240S560 160 720 250'/><path d='M-20 270C100 210 180 350 320 270S560 190 720 280'/><path d='M-20 300C100 240 180 380 320 300S560 220 720 310'/></svg>");background-size:cover}
+.hero h1{font-size:clamp(30px,4.4vw,50px);color:#fff}
+.hero p{color:#B9CFC0;max-width:46ch;margin:14px 0 22px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero .btn:not(.primary){background:transparent;color:#E6F0E8;border-color:rgba(255,255,255,.35)}
+.hero .btn:not(.primary):hover{border-color:#fff}
+.hero-map{margin:0;display:flex;flex-direction:column;gap:10px}
+.hero-map svg{width:100%;height:auto;background:rgba(255,255,255,.05);border-radius:8px}
+.hero-map polygon{cursor:pointer;transition:opacity .15s}
+.hero-map polygon:hover{opacity:.8}
+.hero-map text{pointer-events:none;font-size:11px;fill:#fff;font-weight:600;text-anchor:middle;paint-order:stroke;stroke:rgba(0,0,0,.45);stroke-width:2.5px}
+.hero-map figcaption{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#B9CFC0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--c,#888)}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);background:var(--kertas);border:1px solid var(--garis);border-radius:10px;margin-bottom:22px}
+.kpi{padding:16px 18px;border-left:1px solid var(--garis)}
+.kpi:first-child{border-left:0}
+.kpi b{display:block;font-family:var(--head);font-size:clamp(24px,2.6vw,32px);color:var(--hutan);line-height:1.1}
+.kpi span{font-size:13px;color:var(--redup)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:18px}
+.panel{background:var(--kertas);border:1px solid var(--garis);border-radius:8px;padding:18px 20px;min-width:0}
+.panel h2{font-size:18px;margin-bottom:4px}
+.panel .sub{font-size:13px;color:var(--redup);margin:0 0 12px}
+.chartbox{position:relative;height:250px}
+.alerts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.alerts li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--garis);cursor:pointer}
+.alerts li:first-child{border-top:0}
+.alerts li:hover{background:#F1F6F2}
+.alerts .dot{margin-top:7px;flex:none}
+.alerts small{display:block;color:var(--redup);font-size:12.5px}
+/* badges, tables */
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;border:1px solid var(--c);color:var(--teks);border-radius:20px;padding:1px 9px;white-space:nowrap;background:color-mix(in srgb,var(--c) 12%,white)}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.toolbar input,.toolbar select,.field input,.field select,.field textarea{border:1px solid var(--garis);background:#fff;border-radius:6px;padding:7px 10px;min-width:0}
+.toolbar .grow{flex:1;min-width:170px}
+.tablewrap{overflow:auto;border:1px solid var(--garis);border-radius:8px;background:var(--kertas)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--garis);white-space:nowrap}
+th{background:#F1F6F2;font-weight:600;position:sticky;top:0;cursor:default}
+th[data-k]{cursor:pointer}
+th[data-k]:hover{color:var(--lumut)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#F4F8F5}
+.rowact{display:flex;gap:6px}
+.empty{padding:22px;text-align:center;color:var(--redup)}
+/* map */
+.maptools{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-bottom:12px}
+.maptools label{font-size:13.5px;display:flex;gap:6px;align-items:center}
+.maptools select,.maptools input[type=text]{border:1px solid var(--garis);border-radius:6px;padding:6px 9px;background:#fff}
+.seg{display:inline-flex;border:1px solid var(--garis);border-radius:6px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:6px 12px;cursor:pointer;font-size:13.5px}
+.seg button.on{background:var(--lumut);color:#fff}
+.checks{display:flex;gap:12px;flex-wrap:wrap}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;border:1px solid var(--garis);border-radius:8px;overflow:hidden;background:var(--kertas);height:calc(100vh - 215px);min-height:540px}
+#map{height:100%;width:100%;background:#cfd8d2;z-index:0}
+.inspector{overflow:auto;padding:18px;border-left:1px solid var(--garis)}
+.inspector h2{font-size:24px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:14px 0;font-size:14px}
+.kv dt{color:var(--redup)}.kv dd{margin:0;text-align:right;font-weight:500}
+.bar{height:8px;background:#E3EBE5;border-radius:4px;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--tajuk)}
+.petak-label{background:rgba(8,24,18,.72)!important;color:#fff!important;border:0!important;box-shadow:none!important;font-size:11px!important;padding:1px 6px!important;font-weight:600}
+.petak-label::before{display:none!important}
+.legend{background:rgba(255,255,255,.94);padding:10px 12px;border-radius:8px;font-size:12.5px;line-height:1.7;box-shadow:0 1px 6px rgba(0,0,0,.25);max-width:220px}
+.legend b{display:block;margin-bottom:2px;font-family:var(--head)}
+.legend hr{border:0;border-top:1px solid var(--garis);margin:6px 0}
+.mapnote{font-size:12.5px;color:var(--redup);margin-top:8px}
+/* forms */
+.field{display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+.field span{color:var(--redup)}
+.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.formgrid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--garis);border-radius:8px;margin-top:16px;background:#fff}
+.res{padding:12px 16px;border-left:1px solid var(--garis);border-top:1px solid var(--garis)}
+.res:nth-child(-n+3){border-top:0}.res:nth-child(3n+1){border-left:0}
+.res b{display:block;font-family:var(--head);font-size:24px;color:var(--hutan)}
+.res span{font-size:13px;color:var(--redup)}
+.res.key{background:#FBF1E1}.res.key b{color:#8A4E10}
+dialog{border:0;border-radius:10px;padding:0;width:min(640px,94vw);box-shadow:0 20px 60px rgba(0,0,0,.35);background:var(--kertas);color:var(--teks)}
+dialog::backdrop{background:rgba(10,25,20,.55)}
+.dbody{padding:22px}.dbody h2{margin-bottom:14px}
+.dfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+.slider{display:grid;grid-template-columns:minmax(0,1fr) 150px 34px;gap:12px;align-items:center;padding:6px 0;font-size:14px}
+.slider input[type=range]{width:100%;accent-color:var(--lumut)}
+.slider output{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.group-h{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 2px;padding-bottom:4px;border-bottom:2px solid var(--garis);font-family:var(--head);font-size:16px}
+.big-idx{font-family:var(--head);font-size:64px;line-height:1;color:var(--hutan)}
+.about p{max-width:70ch}
+.idcard{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;margin-top:10px;font-size:15px}
+.idcard dt{color:var(--redup)}.idcard dd{margin:0;font-weight:600}
+.feat{padding-left:18px;margin:8px 0}
+.foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--garis);font-size:13px;color:var(--redup)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--hutan);color:#fff;padding:10px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;z-index:9999;font-size:14px}
+#toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.kpi:nth-child(4){border-left:0}.kpi:nth-child(n+4){border-top:1px solid var(--garis)}.hero{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;padding:12px;flex-direction:column}
+  .brand{padding-bottom:10px}
+  #nav{flex-direction:row;overflow-x:auto;margin-top:10px}
+  #nav button{white-space:nowrap}
+  .who{display:none}
+  .grid2{grid-template-columns:1fr}
+  .mapwrap{grid-template-columns:minmax(0,1fr) 42%;height:calc(100vh - 170px);min-height:460px}
+  .inspector{padding:10px;font-size:12.5px}
+  .inspector h2{font-size:18px}
+  .kv{font-size:12.5px;gap:4px 8px;margin:10px 0}
+  .kv dd{overflow-wrap:anywhere}
+  .legend{font-size:11px;padding:6px 8px;max-width:130px;line-height:1.5}
+  .formgrid,.results{grid-template-columns:1fr 1fr}
+  .res:nth-child(n){border-left:1px solid var(--garis);border-top:1px solid var(--garis)}
+  .res:nth-child(odd){border-left:0}
+  .slider{grid-template-columns:1fr 34px}.slider input{grid-column:1/-1;grid-row:2}
+}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(n){border-left:1px solid var(--garis);border-top:1px solid var(--garis)}.kpi:nth-child(odd){border-left:0}.kpi:nth-child(-n+2){border-top:0}.formgrid,.formgrid.two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body class="">
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 8 21h7l-5 9h20l-5-9h7z" fill="#5E9C6B"></path><rect x="18" y="30" width="4" height="7" fill="#C27A2C"></rect></svg>
+      <div><b>Banua Lestari</b><small>Sistem Informasi Pengelolaan Hutan Lestari</small></div>
+    </div>
+    <nav id="nav" aria-label="Menu utama">
+      <button data-go="dashboard" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>Dashboard</button>
+      <button data-go="peta" class=""><svg viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"></path><path d="M9 4v14M15 6v14"></path></svg>Peta dan petak</button>
+      <button data-go="data"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M9 4v16"></path></svg>Data petak</button>
+      <button data-go="rencana"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>Batas tebang lestari</button>
+      <button data-go="inventarisasi" class=""><svg viewBox="0 0 24 24"><path d="M12 3 6 12h4l-3 6h10l-3-6h4z"></path><path d="M12 18v3"></path></svg>Inventarisasi tegakan</button>
+      <button data-go="monitoring" class=""><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"></path><path d="m9 12 2 2 4-4"></path></svg>Monitoring PHL</button>
+      <button data-go="tentang" class=""><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7.5v.01"></path></svg>Tentang</button>
+    </nav>
+    <div class="who"><b>Oktavian Athaya Ramadany</b>NIM 2410611210065<br>Kehutanan, Universitas Lambung Mangkurat</div>
+  </aside>
+
+  <main class="main">
+    <!-- DASHBOARD -->
+    <section id="v-dashboard" class="view on">
+      <div class="hero">
+        <div>
+          <h1> Pengelolaan Hutan Lestari</h1>
+          <p id="hero-sub">Kawasan hutan contoh di Kecamatan Loksado, Kabupaten Hulu Sungai Selatan, di kaki Pegunungan Meratus, Kalimantan Selatan. Dibagi menjadi 24 petak dalam 4 blok dengan luas total 1.598 ha, dari hutan sekunder sampai lahan yang sedang direhabilitasi. Data atribut petak adalah contoh.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-go="peta">Buka peta petak</button>
+            <button class="btn" data-go="data">Lihat data petak</button>
+          </div>
+        </div>
+        <figure class="hero-map">
+          <svg id="schema" viewBox="0 0 640 430" role="img" aria-label="Skema petak berdasarkan kondisi tegakan"><polygon data-id="D-01" points="27.0,412.0 136.1,389.8 133.1,315.6 34.0,313.1" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-01, Rusak, 67,7 ha</title></polygon><text x="82.5" y="361.6">D-01</text><polygon data-id="D-02" points="136.1,389.8 223.9,400.3 248.0,315.5 133.1,315.6" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-02, Rusak, 61,0 ha</title></polygon><text x="185.3" y="359.3">D-02</text><polygon data-id="D-03" points="223.9,400.3 314.6,401.5 337.9,317.8 248.0,315.5" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-03, Sedang, 57,6 ha</title></polygon><text x="281.1" y="362.8">D-03</text><polygon data-id="D-04" points="314.6,401.5 420.3,399.5 398.7,320.4 337.9,317.8" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-04, Sedang, 51,1 ha</title></polygon><text x="367.9" y="363.8">D-04</text><polygon data-id="D-05" points="420.3,399.5 501.6,406.3 499.9,322.0 398.7,320.4" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-05, Rusak, 55,8 ha</title></polygon><text x="455.1" y="366.1">D-05</text><polygon data-id="D-06" points="501.6,406.3 604.5,394.7 610.1,305.0 499.9,322.0" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>D-06, Rusak, 69,5 ha</title></polygon><text x="554.0" y="361.0">D-06</text><polygon data-id="C-01" points="34.0,313.1 133.1,315.6 137.1,209.0 46.5,221.3" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-01, Sedang, 70,5 ha</title></polygon><text x="87.7" y="268.8">C-01</text><polygon data-id="C-02" points="133.1,315.6 248.0,315.5 247.5,203.2 137.1,209.0" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-02, Rusak, 92,7 ha</title></polygon><text x="191.4" y="264.8">C-02</text><polygon data-id="C-03" points="248.0,315.5 337.9,317.8 339.9,205.8 247.5,203.2" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-03, Sedang, 77,0 ha</title></polygon><text x="293.3" y="264.6">C-03</text><polygon data-id="C-04" points="337.9,317.8 398.7,320.4 393.9,196.4 339.9,205.8" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-04, Sedang, 51,0 ha</title></polygon><text x="367.6" y="264.1">C-04</text><polygon data-id="C-05" points="398.7,320.4 499.9,322.0 503.0,226.5 393.9,196.4" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-05, Baik, 86,8 ha</title></polygon><text x="448.9" y="270.3">C-05</text><polygon data-id="C-06" points="499.9,322.0 610.1,305.0 593.0,213.2 503.0,226.5" fill="#B3432F" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>C-06, Rusak, 71,4 ha</title></polygon><text x="551.5" y="270.7">C-06</text><polygon data-id="B-01" points="46.5,221.3 137.1,209.0 128.2,122.9 43.2,126.4" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-01, Baik, 60,2 ha</title></polygon><text x="88.7" y="173.9">B-01</text><polygon data-id="B-02" points="137.1,209.0 247.5,203.2 246.6,118.3 128.2,122.9" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-02, Baik, 73,8 ha</title></polygon><text x="189.8" y="167.4">B-02</text><polygon data-id="B-03" points="247.5,203.2 339.9,205.8 329.2,107.5 246.6,118.3" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-03, Baik, 60,5 ha</title></polygon><text x="290.8" y="162.7">B-03</text><polygon data-id="B-04" points="339.9,205.8 393.9,196.4 408.4,124.7 329.2,107.5" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-04, Baik, 42,7 ha</title></polygon><text x="367.9" y="162.6">B-04</text><polygon data-id="B-05" points="393.9,196.4 503.0,226.5 492.7,133.5 408.4,124.7" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-05, Baik, 60,2 ha</title></polygon><text x="449.5" y="174.3">B-05</text><polygon data-id="B-06" points="503.0,226.5 593.0,213.2 600.0,107.4 492.7,133.5" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>B-06, Baik, 74,1 ha</title></polygon><text x="547.2" y="174.1">B-06</text><polygon data-id="A-01" points="43.2,126.4 128.2,122.9 121.0,26.0 40.1,29.4" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-01, Baik, 60,7 ha</title></polygon><text x="83.1" y="80.2">A-01</text><polygon data-id="A-02" points="128.2,122.9 246.6,118.3 235.7,18.0 121.0,26.0" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-02, Sedang, 86,9 ha</title></polygon><text x="182.9" y="75.3">A-02</text><polygon data-id="A-03" points="246.6,118.3 329.2,107.5 328.0,21.1 235.7,18.0" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-03, Baik, 61,6 ha</title></polygon><text x="284.9" y="70.2">A-03</text><polygon data-id="A-04" points="329.2,107.5 408.4,124.7 424.7,18.7 328.0,21.1" fill="#3F8F5B" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-04, Baik, 64,1 ha</title></polygon><text x="372.6" y="72.0">A-04</text><polygon data-id="A-05" points="408.4,124.7 492.7,133.5 510.2,31.1 424.7,18.7" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-05, Sedang, 68,0 ha</title></polygon><text x="459.0" y="81.0">A-05</text><polygon data-id="A-06" points="492.7,133.5 600.0,107.4 613.0,18.8 510.2,31.1" fill="#D9A441" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>A-06, Sedang, 73,3 ha</title></polygon><text x="554.0" y="76.7">A-06</text></svg>
+          <figcaption id="schema-legend"><span><i class="dot" style="--c:#3F8F5B"></i>Baik</span><span><i class="dot" style="--c:#D9A441"></i>Sedang</span><span><i class="dot" style="--c:#B3432F"></i>Rusak</span></figcaption>
+        </figure>
+      </div>
+      <div class="kpis" id="kpis"><div class="kpi"><b>1.598</b><span>ha luas kawasan</span></div><div class="kpi"><b>24</b><span>petak</span></div><div class="kpi"><b>192,3 rb</b><span>m³ potensi tegakan</span></div><div class="kpi"><b>84,1%</b><span>tutupan hutan</span></div><div class="kpi"><b>6</b><span>petak siap ditebang</span></div><div class="kpi"><b>66</b><span>indeks kelestarian (PHL), baik</span></div></div>
+      <div class="grid2">
+        <div class="panel"><h2>Luas menurut fungsi hutan</h2><p class="sub">Dalam hektare</p><div class="chartbox"><canvas id="c-fungsi" width="336" height="312" style="display: block; box-sizing: border-box; height: 250px; width: 269px;"></canvas></div></div>
+        <div class="panel"><h2>Potensi tegakan per blok</h2><p class="sub">Ribu m³</p><div class="chartbox"><canvas id="c-blok" width="336" height="312" style="display: block; box-sizing: border-box; height: 250px; width: 269px;"></canvas></div></div>
+        <div class="panel"><h2>Luas menurut kondisi tegakan</h2><p class="sub">Dalam hektare</p><div class="chartbox"><canvas id="c-kondisi" width="336" height="312" style="display: block; box-sizing: border-box; height: 250px; width: 269px;"></canvas></div></div>
+        <div class="panel"><h2>Tren tutupan hutan</h2><p class="sub">Persen dari luas kawasan (data ilustrasi, titik terakhir dihitung dari data petak)</p><div class="chartbox"><canvas id="c-tren" width="336" height="312" style="display: block; box-sizing: border-box; height: 250px; width: 269px;"></canvas></div></div>
+      </div>
+      <div class="panel"><h2>Perlu tindak lanjut</h2><p class="sub">Kejadian lapangan yang belum selesai dan ringkasan risiko kebakaran</p><ul class="alerts" id="alerts"><li data-ev="C-01"><span class="dot" style="--c:#8A3FB0"></span><div><b>Perambahan</b> di petak C-01 <span class="badge" style="--c:#D9A441">Dipantau</span><small>3 Sep 2026. Patok batas bergeser, perlu rekonstruksi tata batas</small></div></li><li data-ev="D-03"><span class="dot" style="--c:#8A3FB0"></span><div><b>Perambahan</b> di petak D-03 <span class="badge" style="--c:#D0623A">Ditindaklanjuti</span><small>27 Agu 2026. Pembukaan lahan sekitar 2 ha untuk kebun</small></div></li><li data-ev="C-06"><span class="dot" style="--c:#B5651D"></span><div><b>Penebangan liar</b> di petak C-06 <span class="badge" style="--c:#D9A441">Dipantau</span><small>11 Agu 2026. Jejak sarad baru menuju sungai</small></div></li><li data-ev="B-04"><span class="dot" style="--c:#B5651D"></span><div><b>Penebangan liar</b> di petak B-04 <span class="badge" style="--c:#D0623A">Ditindaklanjuti</span><small>22 Jul 2026. Enam tunggak ulin ditemukan, dilaporkan ke polisi kehutanan</small></div></li><li data-go="peta"><span class="dot" style="--c:#B3432F"></span><div><b>8 petak berisiko kebakaran tinggi</b><small>D-01, D-02, D-04, D-05, D-06, C-02, C-03, C-05. Perkuat patroli dan siapkan sekat bakar pada musim kemarau.</small></div></li></ul></div>
+    </section>
+
+    <!-- PETA -->
+    <section id="v-peta" class="view">
+      <header class="vhead"><h1>Peta dan petak</h1><p>Klik petak untuk melihat atribut, potensi, dan kejadian di lapangan. Ganti pewarnaan dan peta dasar sesuai kebutuhan analisis.</p></header>
+      <div class="maptools">
+        <label>Warnai petak
+          <select id="m-mode">
+            <option value="kondisi">Kondisi tegakan</option>
+            <option value="fungsi">Fungsi hutan</option>
+            <option value="status">Status kegiatan</option>
+            <option value="vol">Potensi (m³/ha)</option>
+            <option value="risiko">Risiko kebakaran</option>
+          </select>
+        </label>
+        <div class="seg" id="m-base" role="group" aria-label="Peta dasar">
+          <button data-base="sat" class="on">Satelit</button><button data-base="topo">Topografi</button>
+        </div>
+        <div class="checks">
+          <label><input type="checkbox" id="m-l-petak" checked=""> Petak</label>
+          <label><input type="checkbox" id="m-l-label" checked=""> Label</label>
+          <label><input type="checkbox" id="m-l-ev" checked=""> Kejadian</label>
+        </div>
+        <div class="msearch">
+          <input type="text" id="m-q" list="dl-petak" placeholder="Cari petak, mis. B-03" aria-label="Cari petak">
+          <datalist id="dl-petak"><option value="D-01"></option><option value="D-02"></option><option value="D-03"></option><option value="D-04"></option><option value="D-05"></option><option value="D-06"></option><option value="C-01"></option><option value="C-02"></option><option value="C-03"></option><option value="C-04"></option><option value="C-05"></option><option value="C-06"></option><option value="B-01"></option><option value="B-02"></option><option value="B-03"></option><option value="B-04"></option><option value="B-05"></option><option value="B-06"></option><option value="A-01"></option><option value="A-02"></option><option value="A-03"></option><option value="A-04"></option><option value="A-05"></option><option value="A-06"></option></datalist>
+          <button class="btn sm" id="m-find">Cari</button>
+          <button class="btn sm ghost" id="m-all">Lihat semua</button>
+          <button class="btn sm" id="m-move">Geser kawasan</button>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(124.838px, -115.914px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(-82px, -53px, 0px) scale(2);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(-274px, -233px, 0px) scale(1);"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6722" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(84px, 470px, 0px); opacity: 1;"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6723" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(340px, 470px, 0px); opacity: 1;"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6722(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(84px, 214px, 0px); opacity: 1;"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6723(1)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(340px, 214px, 0px); opacity: 1;"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6722(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(84px, 726px, 0px); opacity: 1;"><img crossorigin="" referrerpolicy="origin" alt="" src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/6723(2)" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(340px, 726px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"><svg pointer-events="none" class="leaflet-zoom-animated" width="370" height="646" viewBox="-156 62 370 646" style="transform: translate3d(-156px, 62px, 0px);"><g><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M-93 398L-43 388L-45 354L-90 353z" aria-describedby="leaflet-tooltip-84"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M-43 388L-3 393L8 354L-45 354z" aria-describedby="leaflet-tooltip-86"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M-3 393L38 393L49 355L8 354z" aria-describedby="leaflet-tooltip-88"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M38 393L86 393L76 356L49 355z" aria-describedby="leaflet-tooltip-90"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M86 393L123 396L123 357L76 356z" aria-describedby="leaflet-tooltip-92"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M123 396L170 390L173 349L123 357z" aria-describedby="leaflet-tooltip-94"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M-90 353L-45 354L-43 306L-84 311z" aria-describedby="leaflet-tooltip-96"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M-45 354L8 354L7 303L-43 306z" aria-describedby="leaflet-tooltip-98"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M8 354L49 355L50 304L7 303z" aria-describedby="leaflet-tooltip-100"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M49 355L76 356L74 300L50 304z" aria-describedby="leaflet-tooltip-102"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M76 356L123 357L124 314L74 300z" aria-describedby="leaflet-tooltip-104"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#B3432F" fill-opacity="0.58" fill-rule="evenodd" d="M123 357L173 349L165 308L124 314z" aria-describedby="leaflet-tooltip-106"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M-84 311L-43 306L-47 266L-86 268z" aria-describedby="leaflet-tooltip-108"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M-43 306L7 303L7 264L-47 266z" aria-describedby="leaflet-tooltip-110"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M7 303L50 304L45 259L7 264z" aria-describedby="leaflet-tooltip-112"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M50 304L74 300L81 267L45 259z" aria-describedby="leaflet-tooltip-114"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M74 300L124 314L119 271L81 267z" aria-describedby="leaflet-tooltip-116"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M124 314L165 308L168 259L119 271z" aria-describedby="leaflet-tooltip-118"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M-86 268L-47 266L-50 222L-87 224z" aria-describedby="leaflet-tooltip-120"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M-47 266L7 264L2 218L-50 222z" aria-describedby="leaflet-tooltip-122"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M7 264L45 259L44 220L2 218z" aria-describedby="leaflet-tooltip-124"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#3F8F5B" fill-opacity="0.58" fill-rule="evenodd" d="M45 259L81 267L88 219L44 220z" aria-describedby="leaflet-tooltip-126"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M81 267L119 271L127 224L88 219z" aria-describedby="leaflet-tooltip-128"></path><path class="leaflet-interactive" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="#D9A441" fill-opacity="0.58" fill-rule="evenodd" d="M119 271L168 259L174 219L127 224z" aria-describedby="leaflet-tooltip-130"></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#D6452D" fill-opacity="1" fill-rule="evenodd" d="M-21,373a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#D6452D" fill-opacity="1" fill-rule="evenodd" d="M99,372a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A3FB0" fill-opacity="1" fill-rule="evenodd" d="M11,382a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#8A3FB0" fill-opacity="1" fill-rule="evenodd" d="M-75,331a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#B5651D" fill-opacity="1" fill-rule="evenodd" d="M48,282a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#B5651D" fill-opacity="1" fill-rule="evenodd" d="M137,330a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#2E6FB5" fill-opacity="1" fill-rule="evenodd" d="M-37,246a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#2E6FB5" fill-opacity="1" fill-rule="evenodd" d="M96,243a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#1F8A70" fill-opacity="1" fill-rule="evenodd" d="M-33,288a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#1F8A70" fill-opacity="1" fill-rule="evenodd" d="M15,335a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#7A9E1F" fill-opacity="1" fill-rule="evenodd" d="M-69,376a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path><path class="leaflet-interactive" stroke="#fff" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#7A9E1F" fill-opacity="1" fill-rule="evenodd" d="M61,382a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 "></path></g></svg></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-84" style="opacity: 0.9; transform: translate3d(-87px, 364px, 0px);">D-01</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-86" style="opacity: 0.9; transform: translate3d(-38px, 362px, 0px);">D-02</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-88" style="opacity: 0.9; transform: translate3d(5px, 364px, 0px);">D-03</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-90" style="opacity: 0.9; transform: translate3d(44px, 366px, 0px);">D-04</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-92" style="opacity: 0.9; transform: translate3d(84px, 365px, 0px);">D-05</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-94" style="opacity: 0.9; transform: translate3d(129px, 363px, 0px);">D-06</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-96" style="opacity: 0.9; transform: translate3d(-83px, 321px, 0px);">C-01</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-98" style="opacity: 0.9; transform: translate3d(-36px, 319px, 0px);">C-02</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-100" style="opacity: 0.9; transform: translate3d(10px, 319px, 0px);">C-03</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-102" style="opacity: 0.9; transform: translate3d(44px, 319px, 0px);">C-04</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-104" style="opacity: 0.9; transform: translate3d(80px, 321px, 0px);">C-05</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-106" style="opacity: 0.9; transform: translate3d(128px, 323px, 0px);">C-06</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-108" style="opacity: 0.9; transform: translate3d(-83px, 278px, 0px);">B-01</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-110" style="opacity: 0.9; transform: translate3d(-37px, 275px, 0px);">B-02</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-112" style="opacity: 0.9; transform: translate3d(10px, 273px, 0px);">B-03</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-114" style="opacity: 0.9; transform: translate3d(44px, 271px, 0px);">B-04</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-116" style="opacity: 0.9; transform: translate3d(82px, 279px, 0px);">B-05</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-118" style="opacity: 0.9; transform: translate3d(126px, 277px, 0px);">B-06</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-120" style="opacity: 0.9; transform: translate3d(-86px, 235px, 0px);">A-01</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-122" style="opacity: 0.9; transform: translate3d(-40px, 233px, 0px);">A-02</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-124" style="opacity: 0.9; transform: translate3d(6px, 230px, 0px);">A-03</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-126" style="opacity: 0.9; transform: translate3d(47px, 231px, 0px);">A-04</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-128" style="opacity: 0.9; transform: translate3d(86px, 235px, 0px);">A-05</div><div class="leaflet-tooltip petak-label leaflet-zoom-animated leaflet-tooltip-center" role="tooltip" id="leaflet-tooltip-130" style="opacity: 0.9; transform: translate3d(129px, 234px, 0px);">A-06</div></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1.72105e+06px, 1.06588e+06px, 0px) scale(4096);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="file:///C:/Users/Aspire%207%20Gaming/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/59B9B53140489055E2C3F99AB88FBEDAC5C858FA/transfers/2026-41/index-4.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="file:///C:/Users/Aspire%207%20Gaming/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/LocalState/sessions/59B9B53140489055E2C3F99AB88FBEDAC5C858FA/transfers/2026-41/index-4.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"><div class="legend leaflet-control"><b>Kondisi tegakan</b><div><i class="dot" style="--c:#3F8F5B"></i>Baik</div><div><i class="dot" style="--c:#D9A441"></i>Sedang</div><div><i class="dot" style="--c:#B3432F"></i>Rusak</div><hr><b>Kejadian</b><div><i class="dot" style="--c:#D6452D"></i>Titik panas</div><div><i class="dot" style="--c:#8A3FB0"></i>Perambahan</div><div><i class="dot" style="--c:#B5651D"></i>Penebangan liar</div><div><i class="dot" style="--c:#2E6FB5"></i>Patroli</div><div><i class="dot" style="--c:#1F8A70"></i>Plot ukur permanen</div><div><i class="dot" style="--c:#7A9E1F"></i>Penanaman</div></div><div class="leaflet-control-scale leaflet-control"><div class="leaflet-control-scale-line" style="width: 52px;">1 km</div></div></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> Tiles © Esri</div></div></div></div>
+        <aside class="inspector" id="inspector"><h2>Pilih petak</h2><p style="color:var(--redup)">Klik salah satu petak di peta untuk melihat atribut dan kejadian di dalamnya.</p><dl class="kv"><dt>Jumlah petak</dt><dd>24</dd><dt>Luas kawasan</dt><dd>1.598,2 ha</dd><dt>Kejadian tercatat</dt><dd>12</dd></dl></aside>
+      </div>
+      <p class="mapnote">Posisi kawasan diperkirakan dan batas petak adalah ilustrasi, bukan batas resmi kawasan hutan. Kalau letaknya belum pas di citra satelit, pakai tombol Geser kawasan lalu klik titik yang diinginkan.</p>
+    </section>
+
+    <!-- DATA PETAK -->
+    <section id="v-data" class="view">
+      <header class="vhead"><h1>Data petak</h1><p>Kelola atribut setiap petak: tutupan, kondisi, potensi, dan status kegiatan. Perubahan langsung terlihat di dashboard dan peta.</p></header>
+      <div class="toolbar">
+        <input class="grow" id="t-q" placeholder="Cari kode petak, jenis, atau status" aria-label="Cari">
+        <select id="t-blok" aria-label="Filter blok"><option value="">Semua blok</option><option value="A">Blok A</option><option value="B">Blok B</option><option value="C">Blok C</option><option value="D">Blok D</option></select>
+        <select id="t-fungsi" aria-label="Filter fungsi"><option value="">Semua fungsi</option><option>Hutan Lindung</option><option>Hutan Produksi Terbatas</option><option>Hutan Produksi Tetap</option></select>
+        <select id="t-status" aria-label="Filter status"><option value="">Semua status</option><option>Konservasi</option><option>Pemeliharaan</option><option>Siap ditebang</option><option>Sudah ditebang</option><option>Rehabilitasi</option><option>Agroforestri</option></select>
+        <button class="btn" id="t-csv">Unduh CSV</button>
+        <button class="btn primary" id="t-add">Tambah petak</button>
+      </div>
+      <div class="tablewrap"><table id="tbl">
+        <thead><tr>
+          <th data-k="id">Petak</th><th data-k="blok">Blok</th><th data-k="fungsi">Fungsi</th><th class="num" data-k="luas">Luas (ha)</th>
+          <th data-k="tutupan">Tutupan</th><th data-k="kondisi">Kondisi</th><th data-k="jenis">Jenis dominan</th>
+          <th class="num" data-k="vol">Vol. (m³/ha)</th><th class="num" data-k="pot">Potensi (m³)</th><th data-k="status">Status</th><th data-k="risiko">Risiko api</th><th>Aksi</th>
+        </tr></thead>
+        <tbody><tr><td><b>A-01</b></td><td>A</td><td>Hutan Lindung</td><td class="num">60,7</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Meranti merah</td><td class="num">160</td><td class="num">9.712</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="A-01">Peta</button><button class="btn sm" data-edit="A-01">Ubah</button><button class="btn sm" data-del="A-01">Hapus</button></div></td></tr><tr><td><b>A-02</b></td><td>A</td><td>Hutan Lindung</td><td class="num">86,9</td><td>Hutan primer</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Kapur</td><td class="num">180</td><td class="num">15.642</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="A-02">Peta</button><button class="btn sm" data-edit="A-02">Ubah</button><button class="btn sm" data-del="A-02">Hapus</button></div></td></tr><tr><td><b>A-03</b></td><td>A</td><td>Hutan Lindung</td><td class="num">61,6</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Kapur</td><td class="num">204</td><td class="num">12.566</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="A-03">Peta</button><button class="btn sm" data-edit="A-03">Ubah</button><button class="btn sm" data-del="A-03">Hapus</button></div></td></tr><tr><td><b>A-04</b></td><td>A</td><td>Hutan Lindung</td><td class="num">64,1</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Kapur</td><td class="num">201</td><td class="num">12.884</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="A-04">Peta</button><button class="btn sm" data-edit="A-04">Ubah</button><button class="btn sm" data-del="A-04">Hapus</button></div></td></tr><tr><td><b>A-05</b></td><td>A</td><td>Hutan Lindung</td><td class="num">68,0</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Keruing</td><td class="num">217</td><td class="num">14.756</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="A-05">Peta</button><button class="btn sm" data-edit="A-05">Ubah</button><button class="btn sm" data-del="A-05">Hapus</button></div></td></tr><tr><td><b>A-06</b></td><td>A</td><td>Hutan Lindung</td><td class="num">73,3</td><td>Hutan primer</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Keruing</td><td class="num">193</td><td class="num">14.147</td><td><span class="badge" style="--c:#1F5C46">Konservasi</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="A-06">Peta</button><button class="btn sm" data-edit="A-06">Ubah</button><button class="btn sm" data-del="A-06">Hapus</button></div></td></tr><tr><td><b>B-01</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">60,2</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Keruing</td><td class="num">149</td><td class="num">8.970</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="B-01">Peta</button><button class="btn sm" data-edit="B-01">Ubah</button><button class="btn sm" data-del="B-01">Hapus</button></div></td></tr><tr><td><b>B-02</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">73,8</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Kapur</td><td class="num">148</td><td class="num">10.922</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="B-02">Peta</button><button class="btn sm" data-edit="B-02">Ubah</button><button class="btn sm" data-del="B-02">Hapus</button></div></td></tr><tr><td><b>B-03</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">60,5</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Bangkirai</td><td class="num">145</td><td class="num">8.773</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="B-03">Peta</button><button class="btn sm" data-edit="B-03">Ubah</button><button class="btn sm" data-del="B-03">Hapus</button></div></td></tr><tr><td><b>B-04</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">42,7</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Bangkirai</td><td class="num">125</td><td class="num">5.338</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="B-04">Peta</button><button class="btn sm" data-edit="B-04">Ubah</button><button class="btn sm" data-del="B-04">Hapus</button></div></td></tr><tr><td><b>B-05</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">60,2</td><td>Hutan primer</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Meranti merah</td><td class="num">136</td><td class="num">8.187</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#3F8F5B">Rendah</span></td><td><div class="rowact"><button class="btn sm" data-map="B-05">Peta</button><button class="btn sm" data-edit="B-05">Ubah</button><button class="btn sm" data-del="B-05">Hapus</button></div></td></tr><tr><td><b>B-06</b></td><td>B</td><td>Hutan Produksi Terbatas</td><td class="num">74,1</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Kapur</td><td class="num">162</td><td class="num">12.004</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="B-06">Peta</button><button class="btn sm" data-edit="B-06">Ubah</button><button class="btn sm" data-del="B-06">Hapus</button></div></td></tr><tr><td><b>C-01</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">70,5</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Meranti merah</td><td class="num">121</td><td class="num">8.531</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="C-01">Peta</button><button class="btn sm" data-edit="C-01">Ubah</button><button class="btn sm" data-del="C-01">Hapus</button></div></td></tr><tr><td><b>C-02</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">92,7</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Meranti merah</td><td class="num">128</td><td class="num">11.866</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="C-02">Peta</button><button class="btn sm" data-edit="C-02">Ubah</button><button class="btn sm" data-del="C-02">Hapus</button></div></td></tr><tr><td><b>C-03</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">77,0</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Jelutung</td><td class="num">117</td><td class="num">9.009</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="C-03">Peta</button><button class="btn sm" data-edit="C-03">Ubah</button><button class="btn sm" data-del="C-03">Hapus</button></div></td></tr><tr><td><b>C-04</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">51,0</td><td>Bekas tebangan</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Keruing</td><td class="num">49</td><td class="num">2.499</td><td><span class="badge" style="--c:#8A5A3B">Sudah ditebang</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="C-04">Peta</button><button class="btn sm" data-edit="C-04">Ubah</button><button class="btn sm" data-del="C-04">Hapus</button></div></td></tr><tr><td><b>C-05</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">86,8</td><td>Bekas tebangan</td><td><span class="badge" style="--c:#3F8F5B">Baik</span></td><td>Keruing</td><td class="num">52</td><td class="num">4.514</td><td><span class="badge" style="--c:#8A5A3B">Sudah ditebang</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="C-05">Peta</button><button class="btn sm" data-edit="C-05">Ubah</button><button class="btn sm" data-del="C-05">Hapus</button></div></td></tr><tr><td><b>C-06</b></td><td>C</td><td>Hutan Produksi Tetap</td><td class="num">71,4</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Keruing</td><td class="num">126</td><td class="num">8.996</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="C-06">Peta</button><button class="btn sm" data-edit="C-06">Ubah</button><button class="btn sm" data-del="C-06">Hapus</button></div></td></tr><tr><td><b>D-01</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">67,7</td><td>Lahan terbuka</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Jelutung</td><td class="num">17</td><td class="num">1.151</td><td><span class="badge" style="--c:#D0623A">Rehabilitasi</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="D-01">Peta</button><button class="btn sm" data-edit="D-01">Ubah</button><button class="btn sm" data-del="D-01">Hapus</button></div></td></tr><tr><td><b>D-02</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">61,0</td><td>Belukar</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Karet</td><td class="num">14</td><td class="num">854</td><td><span class="badge" style="--c:#D0623A">Rehabilitasi</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="D-02">Peta</button><button class="btn sm" data-edit="D-02">Ubah</button><button class="btn sm" data-del="D-02">Hapus</button></div></td></tr><tr><td><b>D-03</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">57,6</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Sengon</td><td class="num">79</td><td class="num">4.550</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td><div class="rowact"><button class="btn sm" data-map="D-03">Peta</button><button class="btn sm" data-edit="D-03">Ubah</button><button class="btn sm" data-del="D-03">Hapus</button></div></td></tr><tr><td><b>D-04</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">51,1</td><td>Hutan sekunder</td><td><span class="badge" style="--c:#D9A441">Sedang</span></td><td>Karet</td><td class="num">94</td><td class="num">4.803</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="D-04">Peta</button><button class="btn sm" data-edit="D-04">Ubah</button><button class="btn sm" data-del="D-04">Hapus</button></div></td></tr><tr><td><b>D-05</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">55,8</td><td>Belukar</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Jelutung</td><td class="num">20</td><td class="num">1.116</td><td><span class="badge" style="--c:#D0623A">Rehabilitasi</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="D-05">Peta</button><button class="btn sm" data-edit="D-05">Ubah</button><button class="btn sm" data-del="D-05">Hapus</button></div></td></tr><tr><td><b>D-06</b></td><td>D</td><td>Hutan Produksi Tetap</td><td class="num">69,5</td><td>Belukar</td><td><span class="badge" style="--c:#B3432F">Rusak</span></td><td>Karet</td><td class="num">7</td><td class="num">487</td><td><span class="badge" style="--c:#D0623A">Rehabilitasi</span></td><td><span class="badge" style="--c:#B3432F">Tinggi</span></td><td><div class="rowact"><button class="btn sm" data-map="D-06">Peta</button><button class="btn sm" data-edit="D-06">Ubah</button><button class="btn sm" data-del="D-06">Hapus</button></div></td></tr></tbody>
+      </table></div>
+      <p class="mapnote" id="t-count">24 dari 24 petak, total 1.598,2 ha dan potensi 192.276 m³.</p>
+    </section>
+
+    <!-- RENCANA -->
+    <section id="v-rencana" class="view">
+      <header class="vhead"><h1>Batas tebang lestari</h1><p>Berapa kayu yang boleh diambil tiap tahun supaya hutan tidak habis. Dalam ilmu kehutanan, batas ini disebut etat.</p></header>
+      <div class="panel" style="margin-bottom:18px;background:#F7F1E3;border-color:#E3D3AE">
+        <h2>Cara memahaminya</h2>
+        <p style="margin:6px 0 10px;max-width:75ch">Anggap hutan produksi seperti tabungan. Kayu yang berdiri adalah saldo, dan pertumbuhan pohon tiap tahun adalah bunganya. Tebang lestari berarti hanya mengambil sebesar bunga, jadi saldo tidak berkurang dan hutan tetap bisa dipanen generasi berikutnya.</p>
+        <p style="margin:0;max-width:75ch">Halaman ini bekerja dalam tiga langkah. Pertama, sistem menghitung batas aman dari luas dan stok kayu. Kedua, lo menjadwalkan petak mana ditebang di tahun berapa. Ketiga, grafik menunjukkan apakah jadwal itu masih di bawah batas aman.</p>
+      </div>
+      <div class="panel" style="margin-bottom:18px">
+        <h2>Angka yang dipakai</h2><p class="sub">Luas dan stok kayu diambil otomatis dari petak hutan produksi yang masih berhutan dan belum ditebang. Tiga angka di bawah boleh diubah.</p>
+        <div class="formgrid">
+          <label class="field"><span>Lama putaran tebang (tahun)</span><input type="number" id="p-daur" min="5" max="100" step="1"></label>
+          <label class="field"><span>Pertumbuhan hutan (m³/ha/tahun)</span><input type="number" id="p-riap" min="0.1" max="5" step="0.1"></label>
+          <label class="field"><span>Kayu diambil per ha (m³)</span><input type="number" id="p-vt" min="5" max="120" step="1"></label>
+        </div>
+        <div class="results" id="etat-res"><div class="res"><b>791,8</b><span>ha hutan produksi yang bisa ditebang</span></div><div class="res"><b>101.949</b><span>m³ kayu berdiri di hutan itu</span></div><div class="res"><b>31,7</b><span>ha boleh ditebang per tahun</span></div><div class="res"><b>8.156</b><span>m³/tahun batas dari stok kayu</span></div><div class="res"><b>950</b><span>m³/tahun batas dari pertumbuhan</span></div><div class="res key"><b>950</b><span>m³/tahun batas tebang aman (dipakai)</span></div></div>
+        <p class="mapnote">Batas tebang aman diambil dari angka yang lebih kecil di antara dua cara hitung, supaya hasilnya hati-hati. Cara pertama dari stok kayu: 2 × kayu berdiri ÷ lama putaran (rumus Von Mantel). Cara kedua dari pertumbuhan: pertumbuhan per ha × luas hutan produksi. Luas boleh ditebang per tahun adalah luas hutan produksi ÷ lama putaran.</p>
+      </div>
+      <div class="panel" style="margin-bottom:18px">
+        <h2>Jadwal tebang dibanding batas aman</h2><p class="sub">Satu petak ditebang bertahap, sebesar luas yang boleh ditebang per tahun. Batang hijau masih aman, batang oranye melebihi batas.</p>
+        <div class="chartbox" style="height:280px"><canvas id="c-plan" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas></div>
+        <div class="tablewrap" style="margin-top:14px"><table id="tbl-year"><thead><tr><th>Tahun</th><th>Petak dikerjakan</th><th class="num">Luas (ha)</th><th class="num">Volume (m³)</th><th>Status</th></tr></thead><tbody><tr><td><b>2027</b></td><td>B-01</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2028</b></td><td>B-01</td><td class="num">28,5</td><td class="num">799</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2029</b></td><td>B-02</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2030</b></td><td>B-02</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2031</b></td><td>B-02</td><td class="num">10,5</td><td class="num">293</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2032</b></td><td>B-03</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2033</b></td><td>B-03</td><td class="num">28,8</td><td class="num">807</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2034</b></td><td>B-05</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2035</b></td><td>B-05</td><td class="num">28,5</td><td class="num">799</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2036</b></td><td>C-02</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2037</b></td><td>C-02</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2038</b></td><td>C-02</td><td class="num">29,4</td><td class="num">822</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2039</b></td><td>C-03</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2040</b></td><td>C-03</td><td class="num">31,7</td><td class="num">887</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr><tr><td><b>2041</b></td><td>C-03</td><td class="num">13,7</td><td class="num">382</td><td><span class="badge" style="--c:#3F8F5B">Dalam batas</span></td></tr></tbody></table></div>
+      </div>
+      <div class="panel">
+        <h2>Atur jadwal tiap petak</h2><p class="sub">Pilih tahun mulai tebang untuk setiap petak. Hutan lindung tidak ikut karena tidak boleh ditebang.</p>
+        <div class="tablewrap"><table id="tbl-rkt"><thead><tr><th>Petak</th><th>Fungsi</th><th class="num">Luas (ha)</th><th class="num">Vol. (m³/ha)</th><th>Status</th><th>Mulai tebang</th></tr></thead><tbody><tr><td><b>B-01</b></td><td>Hutan Produksi Terbatas</td><td class="num">60,2</td><td class="num">149</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="B-01" aria-label="Tahun mulai tebang B-01"><option value="">Belum dijadwalkan</option><option selected="">2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>B-02</b></td><td>Hutan Produksi Terbatas</td><td class="num">73,8</td><td class="num">148</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="B-02" aria-label="Tahun mulai tebang B-02"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option selected="">2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>B-03</b></td><td>Hutan Produksi Terbatas</td><td class="num">60,5</td><td class="num">145</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="B-03" aria-label="Tahun mulai tebang B-03"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option selected="">2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>B-04</b></td><td>Hutan Produksi Terbatas</td><td class="num">42,7</td><td class="num">125</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="B-04" aria-label="Tahun mulai tebang B-04"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>B-05</b></td><td>Hutan Produksi Terbatas</td><td class="num">60,2</td><td class="num">136</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="B-05" aria-label="Tahun mulai tebang B-05"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option selected="">2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>B-06</b></td><td>Hutan Produksi Terbatas</td><td class="num">74,1</td><td class="num">162</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="B-06" aria-label="Tahun mulai tebang B-06"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>C-01</b></td><td>Hutan Produksi Tetap</td><td class="num">70,5</td><td class="num">121</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="C-01" aria-label="Tahun mulai tebang C-01"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>C-02</b></td><td>Hutan Produksi Tetap</td><td class="num">92,7</td><td class="num">128</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="C-02" aria-label="Tahun mulai tebang C-02"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option selected="">2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>C-03</b></td><td>Hutan Produksi Tetap</td><td class="num">77,0</td><td class="num">117</td><td><span class="badge" style="--c:#C9A24A">Siap ditebang</span></td><td><select data-rkt="C-03" aria-label="Tahun mulai tebang C-03"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option selected="">2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>C-06</b></td><td>Hutan Produksi Tetap</td><td class="num">71,4</td><td class="num">126</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="C-06" aria-label="Tahun mulai tebang C-06"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>D-03</b></td><td>Hutan Produksi Tetap</td><td class="num">57,6</td><td class="num">79</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="D-03" aria-label="Tahun mulai tebang D-03"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr><tr><td><b>D-04</b></td><td>Hutan Produksi Tetap</td><td class="num">51,1</td><td class="num">94</td><td><span class="badge" style="--c:#6BA56F">Pemeliharaan</span></td><td><select data-rkt="D-04" aria-label="Tahun mulai tebang D-04"><option value="">Belum dijadwalkan</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035</option><option>2036</option><option>2037</option><option>2038</option><option>2039</option><option>2040</option><option>2041</option><option>2042</option><option>2043</option><option>2044</option><option>2045</option></select></td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- INVENTARISASI -->
+    <section id="v-inventarisasi" class="view">
+      <header class="vhead"><h1>Inventarisasi tegakan</h1><p>Hitung volume pohon dari diameter, tinggi bebas cabang, dan angka bentuk, lalu simpan ke risalah cruising per petak.</p></header>
+      <div class="panel" style="margin-bottom:18px">
+        <h2>Kalkulator volume pohon</h2><p class="sub">V = ¼ × π × d² × t × f, dengan d dalam meter</p>
+        <div class="formgrid">
+          <label class="field"><span>Petak</span><select id="c-petak"><option>D-01</option><option>D-02</option><option>D-03</option><option>D-04</option><option>D-05</option><option>D-06</option><option>C-01</option><option>C-02</option><option>C-03</option><option>C-04</option><option>C-05</option><option>C-06</option><option>B-01</option><option>B-02</option><option>B-03</option><option>B-04</option><option>B-05</option><option>B-06</option><option>A-01</option><option>A-02</option><option>A-03</option><option>A-04</option><option>A-05</option><option>A-06</option></select></label>
+          <label class="field"><span>Jenis pohon</span><input id="c-jenis" list="dl-jenis" placeholder="Meranti merah"><datalist id="dl-jenis"><option>Ulin</option><option>Meranti merah</option><option>Keruing</option><option>Kapur</option><option>Bangkirai</option><option>Jelutung</option><option>Karet</option><option>Sengon</option></datalist></label>
+          <label class="field"><span>Jumlah pohon</span><input type="number" id="c-n" min="1" value="1"></label>
+          <label class="field"><span>Diameter setinggi dada (cm)</span><input type="number" id="c-d" min="10" step="0.5" value="55"></label>
+          <label class="field"><span>Tinggi bebas cabang (m)</span><input type="number" id="c-h" min="2" step="0.5" value="22"></label>
+          <label class="field"><span>Angka bentuk</span><input type="number" id="c-f" min="0.3" max="0.9" step="0.01" value="0.6"></label>
+        </div>
+        <div class="results" style="grid-template-columns:repeat(2,1fr)">
+          <div class="res"><b id="c-v1">3,136</b><span>m³ per pohon</span></div>
+          <div class="res key"><b id="c-v2">3,136</b><span>m³ total untuk jumlah pohon ini</span></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn primary" id="c-add">Simpan ke risalah</button></div>
+      </div>
+      <div class="panel">
+        <h2>Risalah cruising</h2><p class="sub" id="c-sum">Catatan hasil pengukuran pohon per petak.</p>
+        <div class="tablewrap"><table id="tbl-c"><thead><tr><th>Petak</th><th>Jenis</th><th class="num">Jumlah</th><th class="num">d (cm)</th><th class="num">t (m)</th><th class="num">f</th><th class="num">Volume (m³)</th><th>Aksi</th></tr></thead><tbody><tr><td colspan="8" class="empty">Belum ada data. Isi kalkulator di atas lalu simpan ke risalah.</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- MONITORING -->
+    <section id="v-monitoring" class="view">
+      <header class="vhead"><h1>Monitoring pengelolaan hutan lestari</h1><p>Nilai 12 indikator pada aspek produksi, ekologi, dan sosial, lalu catat kejadian lapangan yang tampil juga di peta.</p></header>
+      <div class="grid2" style="grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+        <div class="panel"><h2>Penilaian indikator</h2><p class="sub">Geser untuk mengubah nilai 0 sampai 100</p><div id="ind-list"><div class="group-h"><span>Aspek produksi</span><span id="asp-Produksi">57</span></div><div class="slider"><label for="ind0">Kelestarian hasil (etat dan riap)</label><input type="range" id="ind0" data-ind="0" min="0" max="100" value="49"><output id="out0">49</output></div><div class="slider"><label for="ind1">Kepastian kawasan dan tata batas</label><input type="range" id="ind1" data-ind="1" min="0" max="100" value="64"><output id="out1">64</output></div><div class="slider"><label for="ind2">Penerapan silvikultur</label><input type="range" id="ind2" data-ind="2" min="0" max="100" value="57"><output id="out2">57</output></div><div class="slider"><label for="ind3">Pemanfaatan hasil hutan</label><input type="range" id="ind3" data-ind="3" min="0" max="100" value="59"><output id="out3">59</output></div><div class="group-h"><span>Aspek ekologi</span><span id="asp-Ekologi">77</span></div><div class="slider"><label for="ind4">Tutupan hutan</label><input type="range" id="ind4" data-ind="4" min="0" max="100" value="78"><output id="out4">78</output></div><div class="slider"><label for="ind5">Perlindungan nilai konservasi tinggi</label><input type="range" id="ind5" data-ind="5" min="0" max="100" value="82"><output id="out5">82</output></div><div class="slider"><label for="ind6">Pengendalian kebakaran</label><input type="range" id="ind6" data-ind="6" min="0" max="100" value="75"><output id="out6">75</output></div><div class="slider"><label for="ind7">Konservasi tanah dan air</label><input type="range" id="ind7" data-ind="7" min="0" max="100" value="74"><output id="out7">74</output></div><div class="group-h"><span>Aspek sosial</span><span id="asp-Sosial">63</span></div><div class="slider"><label for="ind8">Keterlibatan kelompok tani hutan</label><input type="range" id="ind8" data-ind="8" min="0" max="100" value="69"><output id="out8">69</output></div><div class="slider"><label for="ind9">Pengakuan hak masyarakat</label><input type="range" id="ind9" data-ind="9" min="0" max="100" value="61"><output id="out9">61</output></div><div class="slider"><label for="ind10">Manfaat ekonomi lokal</label><input type="range" id="ind10" data-ind="10" min="0" max="100" value="63"><output id="out10">63</output></div><div class="slider"><label for="ind11">Penyelesaian konflik tenurial</label><input type="range" id="ind11" data-ind="11" min="0" max="100" value="58"><output id="out11">58</output></div></div></div>
+        <div class="panel">
+          <h2>Indeks PHL</h2><p class="sub">Rata-rata seluruh indikator</p>
+          <div class="big-idx" id="idx-val">66</div>
+          <div id="idx-pred" style="margin:6px 0 14px"><span class="badge" style="--c:#6BA56F">Baik</span></div>
+          <div class="chartbox" style="height:210px"><canvas id="c-asp" height="262" style="display: block; box-sizing: border-box; height: 210px; width: 207px;" width="259"></canvas></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Catatan kejadian lapangan</h2><p class="sub">Titik panas, perambahan, penebangan liar, patroli, plot ukur permanen, dan penanaman</p>
+        <div class="toolbar"><select id="e-filter" aria-label="Filter jenis"><option value="">Semua jenis kejadian</option><option>Titik panas</option><option>Perambahan</option><option>Penebangan liar</option><option>Patroli</option><option>Plot ukur permanen</option><option>Penanaman</option></select><span style="flex:1"></span><button class="btn primary" id="e-add">Catat kejadian</button></div>
+        <div class="tablewrap"><table id="tbl-e"><thead><tr><th>Tanggal</th><th>Jenis</th><th>Petak</th><th>Keterangan</th><th>Status</th><th>Aksi</th></tr></thead><tbody><tr><td>26 Sep 2026</td><td><span class="badge" style="--c:#2E6FB5">Patroli</span></td><td><b>A-05</b></td><td style="white-space:normal;min-width:240px">Patroli rutin, jejak rusa sambar terekam</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="A-05">Peta</button><button class="btn sm" data-edel="e8">Hapus</button></div></td></tr><tr><td>25 Sep 2026</td><td><span class="badge" style="--c:#2E6FB5">Patroli</span></td><td><b>A-02</b></td><td style="white-space:normal;min-width:240px">Patroli rutin, tidak ada gangguan</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="A-02">Peta</button><button class="btn sm" data-edel="e7">Hapus</button></div></td></tr><tr><td>18 Sep 2026</td><td><span class="badge" style="--c:#D6452D">Titik panas</span></td><td><b>D-05</b></td><td style="white-space:normal;min-width:240px">Api kecil di semak belukar, dipadamkan regu pemadam desa</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="D-05">Peta</button><button class="btn sm" data-edel="e2">Hapus</button></div></td></tr><tr><td>14 Sep 2026</td><td><span class="badge" style="--c:#D6452D">Titik panas</span></td><td><b>D-02</b></td><td style="white-space:normal;min-width:240px">Titik panas terdeteksi satelit, diverifikasi patroli darat</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="D-02">Peta</button><button class="btn sm" data-edel="e1">Hapus</button></div></td></tr><tr><td>3 Sep 2026</td><td><span class="badge" style="--c:#8A3FB0">Perambahan</span></td><td><b>C-01</b></td><td style="white-space:normal;min-width:240px">Patok batas bergeser, perlu rekonstruksi tata batas</td><td><span class="badge" style="--c:#D9A441">Dipantau</span></td><td><div class="rowact"><button class="btn sm" data-emap="C-01">Peta</button><button class="btn sm" data-edel="e4">Hapus</button></div></td></tr><tr><td>27 Agu 2026</td><td><span class="badge" style="--c:#8A3FB0">Perambahan</span></td><td><b>D-03</b></td><td style="white-space:normal;min-width:240px">Pembukaan lahan sekitar 2 ha untuk kebun</td><td><span class="badge" style="--c:#D0623A">Ditindaklanjuti</span></td><td><div class="rowact"><button class="btn sm" data-emap="D-03">Peta</button><button class="btn sm" data-edel="e3">Hapus</button></div></td></tr><tr><td>11 Agu 2026</td><td><span class="badge" style="--c:#B5651D">Penebangan liar</span></td><td><b>C-06</b></td><td style="white-space:normal;min-width:240px">Jejak sarad baru menuju sungai</td><td><span class="badge" style="--c:#D9A441">Dipantau</span></td><td><div class="rowact"><button class="btn sm" data-emap="C-06">Peta</button><button class="btn sm" data-edel="e6">Hapus</button></div></td></tr><tr><td>22 Jul 2026</td><td><span class="badge" style="--c:#B5651D">Penebangan liar</span></td><td><b>B-04</b></td><td style="white-space:normal;min-width:240px">Enam tunggak ulin ditemukan, dilaporkan ke polisi kehutanan</td><td><span class="badge" style="--c:#D0623A">Ditindaklanjuti</span></td><td><div class="rowact"><button class="btn sm" data-emap="B-04">Peta</button><button class="btn sm" data-edel="e5">Hapus</button></div></td></tr><tr><td>12 Jun 2026</td><td><span class="badge" style="--c:#1F8A70">Plot ukur permanen</span></td><td><b>C-03</b></td><td style="white-space:normal;min-width:240px">Pengukuran ulang plot 0,1 ha</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="C-03">Peta</button><button class="btn sm" data-edel="e10">Hapus</button></div></td></tr><tr><td>10 Jun 2026</td><td><span class="badge" style="--c:#1F8A70">Plot ukur permanen</span></td><td><b>B-02</b></td><td style="white-space:normal;min-width:240px">Pengukuran ulang plot 0,1 ha</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="B-02">Peta</button><button class="btn sm" data-edel="e9">Hapus</button></div></td></tr><tr><td>28 Mei 2026</td><td><span class="badge" style="--c:#7A9E1F">Penanaman</span></td><td><b>D-04</b></td><td style="white-space:normal;min-width:240px">Penanaman pengayaan jelutung di sela belukar</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="D-04">Peta</button><button class="btn sm" data-edel="e12">Hapus</button></div></td></tr><tr><td>20 Mei 2026</td><td><span class="badge" style="--c:#7A9E1F">Penanaman</span></td><td><b>D-01</b></td><td style="white-space:normal;min-width:240px">Penanaman 1.100 bibit per ha jenis meranti dan ulin</td><td><span class="badge" style="--c:#3F8F5B">Selesai</span></td><td><div class="rowact"><button class="btn sm" data-emap="D-01">Peta</button><button class="btn sm" data-edel="e11">Hapus</button></div></td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="v-tentang" class="view about">
+      <header class="vhead"><h1>Tentang sistem</h1></header>
+      <div class="grid2">
+        <div class="panel">
+          <h2>Banua Lestari</h2>
+          <p>Banua Lestari adalah sistem informasi untuk mengelola kawasan hutan secara lestari pada tingkat petak. Satu kawasan dibagi menjadi petak yang masing-masing punya fungsi, kondisi tegakan, potensi, dan status kegiatan. Data itu dipakai untuk menghitung etat, menyusun rencana tebang, dan memantau indikator kelestarian.</p>
+          <p>Lokasi contohnya adalah kawasan hutan di Kecamatan Loksado, Kabupaten Hulu Sungai Selatan, wilayah Pegunungan Meratus yang dikenal dengan hutan, sungai, dan kebun kayu manis masyarakat Dayak Meratus. Petak digambar sebagai pembagian ilustrasi di atas lokasi itu, dan atribut petak serta kejadian lapangan adalah data contoh.</p>
+          <ul class="feat">
+            <li>Dashboard ringkasan luas, potensi, tutupan, dan tindak lanjut</li>
+            <li>Peta interaktif dengan 24 petak, dua peta dasar, dan lima pilihan pewarnaan</li>
+            <li>Data petak yang bisa ditambah, diubah, dihapus, dan diunduh sebagai CSV</li>
+            <li>Perhitungan batas tebang lestari (etat) dan penjadwalan tebang per petak</li>
+            <li>Kalkulator volume pohon dan risalah cruising</li>
+            <li>Penilaian indikator PHL dan pencatatan kejadian lapangan</li>
+          </ul>
+          <p style="color:var(--redup);font-size:13.5px">Perubahan data disimpan di peramban perangkat ini dan hilang jika data situs dibersihkan.</p>
+        </div>
+        <div class="panel">
+          <h2>Penyusun</h2>
+          <dl class="idcard">
+            <dt>Nama</dt><dd>Oktavian Athaya Ramadany</dd>
+            <dt>NIM</dt><dd>2410611210065</dd>
+            <dt>Program studi</dt><dd>Kehutanan</dd>
+            <dt>Fakultas</dt><dd>Kehutanan</dd>
+            <dt>Universitas</dt><dd>Universitas Lambung Mangkurat</dd>
+          </dl>
+          <hr style="border:0;border-top:1px solid var(--garis);margin:20px 0">
+          <h2 style="font-size:16px">Teknologi</h2>
+          <p style="font-size:14px">HTML, CSS, dan JavaScript dalam satu berkas. Peta memakai Leaflet dengan peta dasar Esri (satelit dan topografi). Grafik memakai Chart.js.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid2" style="margin-top:18px;grid-template-columns:1fr">
+      <div class="panel">
+        <h2>Istilah yang dipakai</h2>
+        <dl class="idcard" style="grid-template-columns:130px 1fr;font-size:14px;font-weight:400">
+          <dt>PHL</dt><dd style="font-weight:400">Pengelolaan Hutan Lestari: hutan dimanfaatkan tanpa merusak kemampuannya tumbuh kembali.</dd>
+          <dt>Petak</dt><dd style="font-weight:400">Unit terkecil pengelolaan, biasanya seratusan hektare, yang punya kode dan data sendiri.</dd>
+          <dt>Blok</dt><dd style="font-weight:400">Kumpulan petak yang berdekatan dan punya fungsi mirip.</dd>
+          <dt>Tegakan</dt><dd style="font-weight:400">Kumpulan pohon yang tumbuh di satu petak.</dd>
+          <dt>Potensi</dt><dd style="font-weight:400">Volume kayu yang berdiri, dalam meter kubik (m³).</dd>
+          <dt>Riap</dt><dd style="font-weight:400">Pertumbuhan volume kayu per hektare per tahun.</dd>
+          <dt>Etat</dt><dd style="font-weight:400">Batas tebang aman per tahun supaya hutan tetap lestari.</dd>
+          <dt>Cruising</dt><dd style="font-weight:400">Pengukuran pohon di lapangan untuk menaksir volume kayu.</dd>
+        </dl>
+      </div>
+
+    </div>
+    <div class="foot">Banua Lestari, Sistem Informasi Pengelolaan Hutan Lestari. Disusun oleh Oktavian Athaya Ramadany, NIM 2410611210065, Kehutanan, Universitas Lambung Mangkurat.</div>
+  </main>
+</div>
+
+<!-- Dialog petak -->
+<dialog id="dlg-petak"><div class="dbody">
+  <h2 id="dp-title">Tambah petak</h2>
+  <div class="formgrid">
+    <label class="field"><span>Kode petak</span><input id="f-id" maxlength="8" placeholder="B-07"></label>
+    <label class="field"><span>Blok</span><select id="f-blok"><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
+    <label class="field"><span>Fungsi hutan</span><select id="f-fungsi"><option>Hutan Lindung</option><option>Hutan Produksi Terbatas</option><option>Hutan Produksi Tetap</option></select></label>
+    <label class="field"><span>Tutupan</span><select id="f-tutupan"><option>Hutan primer</option><option>Hutan sekunder</option><option>Bekas tebangan</option><option>Belukar</option><option>Agroforestri</option><option>Lahan terbuka</option></select></label>
+    <label class="field"><span>Kondisi</span><select id="f-kondisi"><option>Baik</option><option>Sedang</option><option>Rusak</option></select></label>
+    <label class="field"><span>Jenis dominan</span><input id="f-jenis" placeholder="Meranti merah"></label>
+    <label class="field"><span>Volume (m³/ha)</span><input type="number" id="f-vol" min="0" step="1"></label>
+    <label class="field"><span>Status kegiatan</span><select id="f-status"><option>Konservasi</option><option>Pemeliharaan</option><option>Siap ditebang</option><option>Sudah ditebang</option><option>Rehabilitasi</option><option>Agroforestri</option></select></label>
+    <label class="field"><span>Risiko kebakaran</span><select id="f-risiko"><option>Rendah</option><option>Sedang</option><option>Tinggi</option></select></label>
+    <label class="field"><span>Survei terakhir</span><input type="month" id="f-survei"></label>
+  </div>
+  <div class="formgrid" id="geo-new" style="margin-top:12px">
+    <label class="field"><span>Lintang pusat petak</span><input type="number" id="f-lat" step="0.0001"></label>
+    <label class="field"><span>Bujur pusat petak</span><input type="number" id="f-lng" step="0.0001"></label>
+    <label class="field"><span>Luas (ha)</span><input type="number" id="f-luas" min="1" step="1"></label>
+  </div>
+  <p class="mapnote" id="geo-note">Petak baru digambar sebagai bujur sangkar dengan luas yang diisi.</p>
+  <div class="dfoot"><button class="btn" id="dp-cancel">Batal</button><button class="btn primary" id="dp-save">Simpan petak</button></div>
+</div></dialog>
+
+<!-- Dialog hapus -->
+<dialog id="dlg-del"><div class="dbody">
+  <h2>Hapus data?</h2><p id="del-text"></p>
+  <div class="dfoot"><button class="btn" id="del-cancel">Batal</button><button class="btn danger" id="del-ok">Hapus</button></div>
+</div></dialog>
+
+<!-- Dialog kejadian -->
+<dialog id="dlg-ev"><div class="dbody">
+  <h2>Catat kejadian</h2>
+  <div class="formgrid two">
+    <label class="field"><span>Jenis</span><select id="e-tipe"><option>Titik panas</option><option>Perambahan</option><option>Penebangan liar</option><option>Patroli</option><option>Plot ukur permanen</option><option>Penanaman</option></select></label>
+    <label class="field"><span>Petak</span><select id="e-petak"><option>D-01</option><option>D-02</option><option>D-03</option><option>D-04</option><option>D-05</option><option>D-06</option><option>C-01</option><option>C-02</option><option>C-03</option><option>C-04</option><option>C-05</option><option>C-06</option><option>B-01</option><option>B-02</option><option>B-03</option><option>B-04</option><option>B-05</option><option>B-06</option><option>A-01</option><option>A-02</option><option>A-03</option><option>A-04</option><option>A-05</option><option>A-06</option></select></label>
+    <label class="field"><span>Tanggal</span><input type="date" id="e-tgl"></label>
+    <label class="field"><span>Status</span><select id="e-status"><option>Dipantau</option><option>Ditindaklanjuti</option><option>Selesai</option></select></label>
+  </div>
+  <label class="field" style="margin-top:12px"><span>Keterangan</span><textarea id="e-ket" rows="3" placeholder="Apa yang ditemukan dan tindakan yang diambil"></textarea></label>
+  <div class="dfoot"><button class="btn" id="e-cancel">Batal</button><button class="btn primary" id="e-save">Simpan kejadian</button></div>
+</div></dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/leaflet.js.download"></script>
+<script src="./Banua Lestari _ Sistem Informasi Pengelolaan Hutan Lestari_files/chart.umd.min.js.download"></script>
+<script>
+(function(){
+'use strict';
+/* ---------- util ---------- */
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const fmt = (n,d=0)=>Number(n).toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});
+const esc = s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sum = (a,f)=>a.reduce((s,x)=>s+f(x),0);
+const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
+const opts = (arr,sel)=>arr.map(a=>'<option'+(a===sel?' selected':'')+'>'+esc(a)+'</option>').join('');
+const fdate = d=>{ const x=new Date(d+'T00:00:00'); return isNaN(x)?d:x.toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'}); };
+const badge = (t,c)=>'<span class="badge" style="--c:'+c+'">'+esc(t)+'</span>';
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(toast.h); toast.h=setTimeout(()=>t.classList.remove('on'),2400); }
+
+const store = {
+  mem:{},
+  get(k){ try{ const v=window.localStorage.getItem(k); return v?JSON.parse(v):null; }catch(e){ return this.mem[k]||null; } },
+  set(k,v){ try{ window.localStorage.setItem(k,JSON.stringify(v)); }catch(e){ this.mem[k]=v; } }
+};
+
+/* ---------- konstanta ---------- */
+const FUNGSI=['Hutan Lindung','Hutan Produksi Terbatas','Hutan Produksi Tetap'];
+const TUTUPAN=['Hutan primer','Hutan sekunder','Bekas tebangan','Belukar','Agroforestri','Lahan terbuka'];
+const FOREST=['Hutan primer','Hutan sekunder','Bekas tebangan'];
+const KONDISI=['Baik','Sedang','Rusak'];
+const STATUS=['Konservasi','Pemeliharaan','Siap ditebang','Sudah ditebang','Rehabilitasi','Agroforestri'];
+const RISIKO=['Rendah','Sedang','Tinggi'];
+const BLOK=['A','B','C','D'];
+const COL={
+  kondisi:{Baik:'#3F8F5B',Sedang:'#D9A441',Rusak:'#B3432F'},
+  fungsi:{'Hutan Lindung':'#1F5C46','Hutan Produksi Terbatas':'#6BA56F','Hutan Produksi Tetap':'#C9A24A'},
+  status:{Konservasi:'#1F5C46',Pemeliharaan:'#6BA56F','Siap ditebang':'#C9A24A','Sudah ditebang':'#8A5A3B',Rehabilitasi:'#D0623A',Agroforestri:'#8FB339'},
+  risiko:{Rendah:'#3F8F5B',Sedang:'#D9A441',Tinggi:'#B3432F'}
+};
+const TIPE={'Titik panas':'#D6452D','Perambahan':'#8A3FB0','Penebangan liar':'#B5651D','Patroli':'#2E6FB5','Plot ukur permanen':'#1F8A70','Penanaman':'#7A9E1F'};
+const STATUS_EV=['Dipantau','Ditindaklanjuti','Selesai'];
+const EV_COL={Dipantau:'#D9A441',Ditindaklanjuti:'#D0623A',Selesai:'#3F8F5B'};
+const IND=[
+  ['Produksi','Kelestarian hasil (etat dan riap)',72],['Produksi','Kepastian kawasan dan tata batas',64],['Produksi','Penerapan silvikultur',70],['Produksi','Pemanfaatan hasil hutan',68],
+  ['Ekologi','Tutupan hutan',78],['Ekologi','Perlindungan nilai konservasi tinggi',82],['Ekologi','Pengendalian kebakaran',66],['Ekologi','Konservasi tanah dan air',74],
+  ['Sosial','Keterlibatan kelompok tani hutan',69],['Sosial','Pengakuan hak masyarakat',61],['Sosial','Manfaat ekonomi lokal',63],['Sosial','Penyelesaian konflik tenurial',58]
+];
+const ASPEK=['Produksi','Ekologi','Sosial'];
+
+/* ---------- data awal (deterministik) ---------- */
+function rng(seed){ return function(){ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+const ORIGIN={lat:-2.9698,lng:115.4178}, COLS=6, ROWS=4, DLAT=0.0074, DLNG=0.0074;
+function areaHa(poly){
+  const lat0=poly.reduce((a,p)=>a+p[0],0)/poly.length;
+  const kx=111.320*Math.cos(lat0*Math.PI/180), ky=110.574; let s=0;
+  for(let i=0;i<poly.length;i++){ const a=poly[i], b=poly[(i+1)%poly.length]; s+=(a[1]*kx)*(b[0]*ky)-(b[1]*kx)*(a[0]*ky); }
+  return Math.abs(s)/2*100;
+}
+function centroid(poly){ return [poly.reduce((a,p)=>a+p[0],0)/poly.length, poly.reduce((a,p)=>a+p[1],0)/poly.length]; }
+function buildGrid(){
+  const r=rng(7), V=[];
+  for(let i=0;i<=ROWS;i++){ V[i]=[]; for(let j=0;j<=COLS;j++){
+    const edge=(i===0||i===ROWS||j===0||j===COLS), jt=edge?0.0009:0.0018;
+    V[i][j]=[ORIGIN.lat+i*DLAT+(r()-.5)*jt*2, ORIGIN.lng+j*DLNG+(r()-.5)*jt*2];
+  }}
+  return V;
+}
+function hutanProd(list,withTebang){
+  return list.filter(p=>p.fungsi!=='Hutan Lindung' && ['Hutan primer','Hutan sekunder'].includes(p.tutupan));
+}
+function seedPetak(){
+  const V=buildGrid(), r=rng(21), out=[];
+  const pick=a=>a[Math.floor(r()*a.length)];
+  const rg=(a,b)=>Math.round(a+r()*(b-a));
+  const CFG={
+    A:{fungsi:FUNGSI[0],tut:['Hutan primer','Hutan primer','Hutan sekunder'],vol:[150,220],jenis:['Ulin','Meranti merah','Keruing','Kapur'],status:['Konservasi'],kond:['Baik','Baik','Baik','Sedang'],risk:['Rendah','Rendah','Sedang']},
+    B:{fungsi:FUNGSI[1],tut:['Hutan sekunder','Hutan sekunder','Hutan primer'],vol:[110,170],jenis:['Meranti merah','Keruing','Bangkirai','Kapur'],status:['Pemeliharaan','Siap ditebang','Siap ditebang'],kond:['Baik','Baik','Sedang'],risk:['Rendah','Sedang','Sedang']},
+    C:{fungsi:FUNGSI[2],tut:['Hutan sekunder','Hutan sekunder','Hutan sekunder','Belukar'],vol:[75,130],jenis:['Meranti merah','Keruing','Bangkirai','Jelutung'],status:['Siap ditebang','Siap ditebang','Pemeliharaan','Sudah ditebang'],kond:['Sedang','Sedang','Baik','Rusak'],risk:['Sedang','Sedang','Tinggi']},
+    D:{fungsi:FUNGSI[2],tut:['Belukar','Agroforestri','Lahan terbuka','Belukar','Hutan sekunder'],vol:[70,110],jenis:['Karet','Kayu manis','Sengon','Jelutung'],status:['Pemeliharaan'],kond:['Sedang'],risk:['Tinggi','Sedang','Tinggi']}
+  };
+  const rowBlok=['D','C','B','A'];
+  for(let i=0;i<ROWS;i++) for(let j=0;j<COLS;j++){
+    const b=rowBlok[i], c=CFG[b];
+    const poly=[V[i][j],V[i][j+1],V[i+1][j+1],V[i+1][j]];
+    let tutupan=pick(c.tut), kondisi=pick(c.kond), status=pick(c.status), vol=rg(c.vol[0],c.vol[1]), rkt=null;
+    if(tutupan==='Belukar'||tutupan==='Lahan terbuka'){ status='Rehabilitasi'; kondisi='Rusak'; vol=rg(6,30); }
+    else if(tutupan==='Agroforestri'){ status='Agroforestri'; kondisi='Sedang'; vol=rg(20,50); }
+    else if(status==='Sudah ditebang'){ tutupan='Bekas tebangan'; vol=Math.round(vol*0.55); rkt=2024; }
+    out.push({id:b+'-'+String(j+1).padStart(2,'0'),blok:b,fungsi:c.fungsi,poly:poly,luas:+areaHa(poly).toFixed(1),tutupan:tutupan,kondisi:kondisi,
+      jenis:pick(c.jenis),vol:vol,status:status,risiko:pick(c.risk),survei:'202'+(4+Math.floor(r()*3))+'-'+String(1+Math.floor(r()*9)).padStart(2,'0'),rkt:rkt});
+  }
+  return out;
+}
+function seedRKT(list,param){
+  const L=sum(hutanProd(list),p=>p.luas), etatLuas=L/param.daur;
+  const cand=list.filter(p=>p.status==='Siap ditebang'&&p.fungsi!=='Hutan Lindung').sort((a,b)=>b.vol-a.vol);
+  let y=2027;
+  cand.forEach(p=>{ p.rkt=y; y+=Math.max(1,Math.ceil(p.luas/etatLuas)); });
+}
+function seedKejadian(petak){
+  const r=rng(55);
+  const base=[
+    ['Titik panas','D-02','2026-09-14','Titik panas terdeteksi satelit, diverifikasi patroli darat','Selesai'],
+    ['Titik panas','D-05','2026-09-18','Api kecil di semak belukar, dipadamkan regu pemadam desa','Selesai'],
+    ['Perambahan','D-03','2026-08-27','Pembukaan lahan sekitar 2 ha untuk kebun','Ditindaklanjuti'],
+    ['Perambahan','C-01','2026-09-03','Patok batas bergeser, perlu rekonstruksi tata batas','Dipantau'],
+    ['Penebangan liar','B-04','2026-07-22','Enam tunggak ulin ditemukan, dilaporkan ke polisi kehutanan','Ditindaklanjuti'],
+    ['Penebangan liar','C-06','2026-08-11','Jejak sarad baru menuju sungai','Dipantau'],
+    ['Patroli','A-02','2026-09-25','Patroli rutin, tidak ada gangguan','Selesai'],
+    ['Patroli','A-05','2026-09-26','Patroli rutin, jejak rusa sambar terekam','Selesai'],
+    ['Plot ukur permanen','B-02','2026-06-10','Pengukuran ulang plot 0,1 ha','Selesai'],
+    ['Plot ukur permanen','C-03','2026-06-12','Pengukuran ulang plot 0,1 ha','Selesai'],
+    ['Penanaman','D-01','2026-05-20','Penanaman 1.100 bibit per ha jenis meranti dan ulin','Selesai'],
+    ['Penanaman','D-04','2026-05-28','Penanaman pengayaan jelutung di sela belukar','Selesai']
+  ];
+  return base.map((e,i)=>{
+    const p=petak.find(x=>x.id===e[1]); const c=p?centroid(p.poly):[ORIGIN.lat,ORIGIN.lng];
+    return {id:'e'+(i+1),tipe:e[0],petak:e[1],tgl:e[2],ket:e[3],status:e[4],lat:c[0]+(r()-.5)*0.003,lng:c[1]+(r()-.5)*0.003};
+  });
+}
+
+/* ---------- state ---------- */
+const KEY='banua-lestari-v4';
+let S=store.get(KEY);
+if(!S||!S.petak||!S.kejadian){
+  const petak=seedPetak(), param={daur:25,riap:1.2,vt:28};
+  seedRKT(petak,param);
+  S={petak:petak,kejadian:seedKejadian(petak),ind:IND.map(x=>x[2]),param:param,cruise:[]};
+  store.set(KEY,S);
+}
+const save=()=>store.set(KEY,S);
+
+/* ---------- hitung ---------- */
+const potensi=p=>p.luas*p.vol;
+const idxPHL=()=>S.ind.reduce((a,b)=>a+b,0)/S.ind.length;
+const predikat=v=>v>=80?['Sangat baik','#3F8F5B']:v>=65?['Baik','#6BA56F']:v>=50?['Cukup','#D9A441']:['Kurang','#B3432F'];
+function calcEtat(){
+  const list=hutanProd(S.petak), L=sum(list,p=>p.luas), V=sum(list,potensi), q=S.param;
+  const etatLuas=L/q.daur, vm=2*V/q.daur, vr=q.riap*L;
+  return {L:L,V:V,etatLuas:etatLuas,vm:vm,vr:vr,kons:Math.min(vm,vr)};
+}
+function schedule(){
+  const e=calcEtat(), years={};
+  if(e.etatLuas>0){
+    S.petak.filter(p=>p.rkt&&p.rkt>=2027&&p.fungsi!=='Hutan Lindung').forEach(p=>{
+      let rem=p.luas, y=p.rkt; const vha=Math.min(S.param.vt,p.vol*0.4);
+      while(rem>0.0001 && y<2100){
+        const ha=Math.min(e.etatLuas,rem);
+        const o=years[y]||(years[y]={ha:0,vol:0,petak:[]});
+        o.ha+=ha; o.vol+=ha*vha; if(o.petak.indexOf(p.id)<0) o.petak.push(p.id);
+        rem-=ha; y++;
+      }
+    });
+  }
+  return {e:e,years:years};
+}
+
+/* ---------- charts ---------- */
+const charts={};
+function chart(id,cfg){
+  if(typeof Chart==='undefined') return;
+  if(charts[id]) charts[id].destroy();
+  charts[id]=new Chart(document.getElementById(id),cfg);
+}
+if(typeof Chart!=='undefined'){ Chart.defaults.font.family="'IBM Plex Sans','Segoe UI',sans-serif"; Chart.defaults.color='#5D6F66'; }
+const noGrid={grid:{display:false}};
+
+/* ---------- dashboard ---------- */
+function renderDashboard(){
+  const ps=S.petak, total=sum(ps,p=>p.luas), pot=sum(ps,potensi);
+  const cover=100*sum(ps.filter(p=>FOREST.indexOf(p.tutupan)>=0),p=>p.luas)/(total||1);
+  const idx=idxPHL(), pr=predikat(idx), siap=ps.filter(p=>p.status==='Siap ditebang').length;
+  $('#hero-sub').textContent='Kawasan hutan contoh di Kecamatan Loksado, Kabupaten Hulu Sungai Selatan, di kaki Pegunungan Meratus, Kalimantan Selatan. Dibagi menjadi '+ps.length+' petak dalam '+new Set(ps.map(p=>p.blok)).size+' blok dengan luas total '+fmt(total)+' ha, dari hutan sekunder sampai lahan yang sedang direhabilitasi. Data atribut petak adalah contoh.';
+  $('#kpis').innerHTML=[
+    [fmt(total),'ha luas kawasan'],[ps.length,'petak'],[fmt(pot/1000,1)+' rb','m³ potensi tegakan'],
+    [fmt(cover,1)+'%','tutupan hutan'],[siap,'petak siap ditebang'],[fmt(idx,0),'indeks kelestarian (PHL), '+pr[0].toLowerCase()]
+  ].map(k=>'<div class="kpi"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>').join('');
+  renderSchema();
+  chart('c-fungsi',{type:'doughnut',data:{labels:FUNGSI,datasets:[{data:FUNGSI.map(f=>+sum(ps.filter(p=>p.fungsi===f),p=>p.luas).toFixed(0)),backgroundColor:FUNGSI.map(f=>COL.fungsi[f]),borderColor:'#FBFCFA',borderWidth:3}]},options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right'}}}});
+  chart('c-blok',{type:'bar',data:{labels:BLOK.map(b=>'Blok '+b),datasets:[{data:BLOK.map(b=>+(sum(ps.filter(p=>p.blok===b),potensi)/1000).toFixed(1)),backgroundColor:['#1F5C46','#6BA56F','#C9A24A','#D0623A'],borderRadius:4}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:noGrid}}});
+  chart('c-kondisi',{type:'bar',data:{labels:['Baik','Sedang','Rusak'],datasets:[{data:KONDISI.map(k=>+sum(ps.filter(p=>p.kondisi===k),p=>p.luas).toFixed(0)),backgroundColor:KONDISI.map(k=>COL.kondisi[k]),borderRadius:4}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:noGrid}}});
+  const off=[-2.4,-3.1,-3.9,-4.2,-3.6,-2.0,-0.9,0];
+  chart('c-tren',{type:'line',data:{labels:['2019','2020','2021','2022','2023','2024','2025','2026'],datasets:[{data:off.map(o=>+(cover+o).toFixed(1)),borderColor:'#2F6B4F',backgroundColor:'rgba(94,156,107,.18)',fill:true,tension:.3,pointRadius:3,pointBackgroundColor:'#2F6B4F'}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:noGrid,y:{ticks:{callback:v=>v+'%'}}}}});
+  // tindak lanjut
+  const open=S.kejadian.filter(e=>e.status!=='Selesai').sort((a,b)=>b.tgl.localeCompare(a.tgl));
+  const hi=ps.filter(p=>p.risiko==='Tinggi');
+  let h=open.map(e=>'<li data-ev="'+esc(e.petak)+'"><span class="dot" style="--c:'+TIPE[e.tipe]+'"></span><div><b>'+esc(e.tipe)+'</b> di petak '+esc(e.petak)+' '+badge(e.status,EV_COL[e.status])+'<small>'+fdate(e.tgl)+'. '+esc(e.ket)+'</small></div></li>').join('');
+  if(hi.length) h+='<li data-go="peta"><span class="dot" style="--c:#B3432F"></span><div><b>'+hi.length+' petak berisiko kebakaran tinggi</b><small>'+hi.map(p=>esc(p.id)).join(', ')+'. Perkuat patroli dan siapkan sekat bakar pada musim kemarau.</small></div></li>';
+  $('#alerts').innerHTML=h||'<li style="cursor:default">Tidak ada kejadian yang perlu ditindaklanjuti.</li>';
+}
+function renderSchema(){
+  const ps=S.petak, W=640,H=430,pad=18, all=ps.flatMap(p=>p.poly);
+  const minLat=Math.min.apply(null,all.map(a=>a[0])), maxLat=Math.max.apply(null,all.map(a=>a[0]));
+  const minLng=Math.min.apply(null,all.map(a=>a[1])), maxLng=Math.max.apply(null,all.map(a=>a[1]));
+  const cosL=Math.cos((minLat+maxLat)/2*Math.PI/180), w=(maxLng-minLng)*cosL, h=maxLat-minLat;
+  const sc=Math.min((W-2*pad)/w,(H-2*pad)/h), ox=(W-w*sc)/2, oy=(H-h*sc)/2;
+  const X=g=>ox+(g-minLng)*cosL*sc, Y=t=>oy+(maxLat-t)*sc;
+  let s='';
+  ps.forEach(p=>{
+    const pts=p.poly.map(q=>X(q[1]).toFixed(1)+','+Y(q[0]).toFixed(1)).join(' '), c=centroid(p.poly);
+    s+='<polygon data-id="'+esc(p.id)+'" points="'+pts+'" fill="'+COL.kondisi[p.kondisi]+'" stroke="#16312A" stroke-width="2" stroke-linejoin="round"><title>'+esc(p.id)+', '+esc(p.kondisi)+', '+fmt(p.luas,1)+' ha</title></polygon>';
+    s+='<text x="'+X(c[1]).toFixed(1)+'" y="'+(Y(c[0])+4).toFixed(1)+'">'+esc(p.id)+'</text>';
+  });
+  $('#schema').innerHTML=s;
+  $('#schema-legend').innerHTML=KONDISI.map(k=>'<span><i class="dot" style="--c:'+COL.kondisi[k]+'"></i>'+k+'</span>').join('');
+}
+
+/* ---------- peta ---------- */
+let map=null, base={}, gPetak, gEv, polyById={}, selId=null, legend;
+function volColor(v){
+  const t=clamp(v/220,0,1), a=[232,217,160], b=[31,92,70];
+  return 'rgb('+a.map((x,i)=>Math.round(x+(b[i]-x)*t)).join(',')+')';
+}
+function colorOf(p,mode){
+  if(mode==='vol') return volColor(p.vol);
+  return (COL[mode]||{})[p[mode]]||'#999';
+}
+function initMap(){
+  if(map) return;
+  if(typeof L==='undefined'){ $('#map').innerHTML='<div class="empty">Peta tidak bisa dimuat. Periksa koneksi internet lalu muat ulang halaman.</div>'; return; }
+  map=L.map('map',{zoomControl:true});
+  const to={referrerPolicy:'origin',crossOrigin:true};
+  base.sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',Object.assign({maxZoom:18,attribution:'Tiles &copy; Esri'},to));
+  base.topo=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',Object.assign({maxZoom:18,attribution:'Tiles &copy; Esri'},to));
+  let terr=0; Object.keys(base).forEach(k=>base[k].on('tileerror',()=>{ if(++terr===6) toast('Sebagian peta dasar gagal dimuat. Coba ganti peta dasar atau cek koneksi.'); }));
+  base.sat.addTo(map); map._base='sat';
+  gPetak=L.layerGroup().addTo(map); gEv=L.layerGroup().addTo(map);
+  L.control.scale({imperial:false}).addTo(map);
+  legend=L.control({position:'bottomleft'});
+  legend.onAdd=function(){ this._d=L.DomUtil.create('div','legend'); return this._d; };
+  legend.addTo(map);
+  map.on('click',function(e){ if(!moving) return; moving=false; map.getContainer().style.cursor=''; shiftTo(e.latlng.lat,e.latlng.lng); });
+  drawMap(); fitAll();
+}
+let moving=false;
+function shiftTo(lat,lng){
+  const all=S.petak.flatMap(p=>p.poly), la=all.map(a=>a[0]), lo=all.map(a=>a[1]);
+  const dlat=lat-(Math.min.apply(null,la)+Math.max.apply(null,la))/2, dlng=lng-(Math.min.apply(null,lo)+Math.max.apply(null,lo))/2;
+  S.petak.forEach(p=>{ p.poly=p.poly.map(q=>[q[0]+dlat,q[1]+dlng]); });
+  S.kejadian.forEach(e=>{ e.lat+=dlat; e.lng+=dlng; });
+  save(); renderAll(); fitAll(); toast('Kawasan dipindahkan');
+}
+function fitAll(){
+  if(!map||!S.petak.length) return;
+  const b=L.latLngBounds(S.petak.flatMap(p=>p.poly));
+  map.fitBounds(b,{padding:[30,30]});
+}
+function drawMap(){
+  if(!map) return;
+  const mode=$('#m-mode').value, showLab=$('#m-l-label').checked;
+  gPetak.clearLayers(); polyById={};
+  S.petak.forEach(p=>{
+    const poly=L.polygon(p.poly,{color:'#ffffff',weight:1.6,fillColor:colorOf(p,mode),fillOpacity:.58});
+    if(showLab) poly.bindTooltip(p.id,{permanent:true,direction:'center',className:'petak-label'});
+    poly.on('click',()=>{ if(!moving) selectPetak(p.id,false); });
+    poly.addTo(gPetak); polyById[p.id]=poly;
+  });
+  gEv.clearLayers();
+  S.kejadian.forEach(e=>{
+    L.circleMarker([e.lat,e.lng],{radius:7,color:'#fff',weight:2,fillColor:TIPE[e.tipe]||'#555',fillOpacity:1})
+      .bindPopup('<b>'+esc(e.tipe)+'</b><br>Petak '+esc(e.petak)+', '+fdate(e.tgl)+'<br>'+esc(e.ket)+'<br>Status: '+esc(e.status)).addTo(gEv);
+  });
+  $('#m-l-petak').checked?map.addLayer(gPetak):map.removeLayer(gPetak);
+  $('#m-l-ev').checked?map.addLayer(gEv):map.removeLayer(gEv);
+  styleSel(); drawLegend(mode); renderInspector();
+}
+function styleSel(){
+  Object.keys(polyById).forEach(id=>polyById[id].setStyle(id===selId?{color:'#FFE08A',weight:4}:{color:'#ffffff',weight:1.6}));
+  if(selId&&polyById[selId]) polyById[selId].bringToFront();
+}
+function drawLegend(mode){
+  if(!legend||!legend._d) return;
+  const names={kondisi:'Kondisi tegakan',fungsi:'Fungsi hutan',status:'Status kegiatan',vol:'Potensi (m³/ha)',risiko:'Risiko kebakaran'};
+  let h='<b>'+names[mode]+'</b>';
+  if(mode==='vol') h+=[0,55,110,165,220].map(v=>'<div><i class="dot" style="--c:'+volColor(v)+'"></i>'+(v===220?'220 atau lebih':v)+'</div>').join('');
+  else h+=Object.keys(COL[mode]).map(k=>'<div><i class="dot" style="--c:'+COL[mode][k]+'"></i>'+esc(k)+'</div>').join('');
+  h+='<hr><b>Kejadian</b>'+Object.keys(TIPE).map(k=>'<div><i class="dot" style="--c:'+TIPE[k]+'"></i>'+k+'</div>').join('');
+  legend._d.innerHTML=h;
+}
+function selectPetak(id,zoom){
+  selId=id; styleSel(); renderInspector();
+  if(zoom&&map&&polyById[id]) map.fitBounds(polyById[id].getBounds(),{maxZoom:15,padding:[50,50]});
+}
+function renderInspector(){
+  const el=$('#inspector'), p=S.petak.find(x=>x.id===selId);
+  if(!p){
+    const mode=$('#m-mode').value, tot=sum(S.petak,x=>x.luas);
+    el.innerHTML='<h2>Pilih petak</h2><p style="color:var(--redup)">Klik salah satu petak di peta untuk melihat atribut dan kejadian di dalamnya.</p><dl class="kv"><dt>Jumlah petak</dt><dd>'+S.petak.length+'</dd><dt>Luas kawasan</dt><dd>'+fmt(tot,1)+' ha</dd><dt>Kejadian tercatat</dt><dd>'+S.kejadian.length+'</dd></dl>';
+    return;
+  }
+  const ev=S.kejadian.filter(e=>e.petak===p.id);
+  el.innerHTML='<h2>Petak '+esc(p.id)+'</h2><div style="margin:8px 0 0;display:flex;gap:6px;flex-wrap:wrap">'+badge(p.kondisi,COL.kondisi[p.kondisi])+badge(p.status,COL.status[p.status]||'#888')+'</div>'
+  +'<dl class="kv"><dt>Fungsi</dt><dd>'+esc(p.fungsi)+'</dd><dt>Blok</dt><dd>'+esc(p.blok)+'</dd><dt>Luas</dt><dd>'+fmt(p.luas,1)+' ha</dd><dt>Tutupan</dt><dd>'+esc(p.tutupan)+'</dd><dt>Jenis dominan</dt><dd>'+esc(p.jenis)+'</dd><dt>Volume</dt><dd>'+fmt(p.vol)+' m³/ha</dd><dt>Potensi petak</dt><dd>'+fmt(potensi(p))+' m³</dd><dt>Risiko kebakaran</dt><dd>'+esc(p.risiko)+'</dd><dt>Survei terakhir</dt><dd>'+esc(p.survei)+'</dd><dt>Mulai tebang</dt><dd>'+(p.rkt?p.rkt:'Belum dijadwalkan')+'</dd></dl>'
+  +'<div style="font-size:13px;color:var(--redup)">Volume dibanding batas atas skala (220 m³/ha)</div><div class="bar"><i style="width:'+clamp(p.vol/220*100,0,100)+'%"></i></div>'
+  +'<div style="margin:16px 0;display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm primary" data-edit="'+esc(p.id)+'">Ubah data</button><button class="btn sm" data-zoom="'+esc(p.id)+'">Zoom ke petak</button></div>'
+  +'<h3 style="font-size:16px;margin-bottom:6px">Kejadian di petak ini</h3>'
+  +(ev.length?ev.map(e=>'<div style="padding:8px 0;border-top:1px solid var(--garis);font-size:13.5px"><span class="dot" style="--c:'+TIPE[e.tipe]+'"></span><b>'+esc(e.tipe)+'</b>, '+fdate(e.tgl)+'<br><span style="color:var(--redup)">'+esc(e.ket)+'</span></div>').join(''):'<p style="color:var(--redup);font-size:13.5px">Belum ada kejadian tercatat.</p>');
+}
+
+/* ---------- tabel petak ---------- */
+const tbl={q:'',blok:'',fungsi:'',status:'',k:'id',dir:1};
+const sval=(p,k)=>k==='pot'?potensi(p):p[k];
+function renderTable(){
+  let rows=S.petak.filter(p=>{
+    const q=tbl.q.toLowerCase();
+    return (!q||(p.id+' '+p.jenis+' '+p.status+' '+p.tutupan).toLowerCase().indexOf(q)>=0)&&(!tbl.blok||p.blok===tbl.blok)&&(!tbl.fungsi||p.fungsi===tbl.fungsi)&&(!tbl.status||p.status===tbl.status);
+  });
+  rows.sort((a,b)=>{ const x=sval(a,tbl.k), y=sval(b,tbl.k); return (typeof x==='number'?x-y:String(x).localeCompare(String(y),'id',{numeric:true}))*tbl.dir; });
+  $('#tbl tbody').innerHTML=rows.map(p=>'<tr><td><b>'+esc(p.id)+'</b></td><td>'+esc(p.blok)+'</td><td>'+esc(p.fungsi)+'</td><td class="num">'+fmt(p.luas,1)+'</td><td>'+esc(p.tutupan)+'</td><td>'+badge(p.kondisi,COL.kondisi[p.kondisi])+'</td><td>'+esc(p.jenis)+'</td><td class="num">'+fmt(p.vol)+'</td><td class="num">'+fmt(potensi(p))+'</td><td>'+badge(p.status,COL.status[p.status]||'#888')+'</td><td>'+badge(p.risiko,COL.risiko[p.risiko])+'</td><td><div class="rowact"><button class="btn sm" data-map="'+esc(p.id)+'">Peta</button><button class="btn sm" data-edit="'+esc(p.id)+'">Ubah</button><button class="btn sm" data-del="'+esc(p.id)+'">Hapus</button></div></td></tr>').join('')||'<tr><td colspan="12" class="empty">Tidak ada petak yang cocok dengan filter.</td></tr>';
+  $('#t-count').textContent=rows.length+' dari '+S.petak.length+' petak, total '+fmt(sum(rows,p=>p.luas),1)+' ha dan potensi '+fmt(sum(rows,potensi))+' m³.';
+}
+function fillFilters(){
+  $('#t-blok').innerHTML='<option value="">Semua blok</option>'+BLOK.map(b=>'<option value="'+b+'">Blok '+b+'</option>').join('');
+  $('#t-fungsi').innerHTML='<option value="">Semua fungsi</option>'+opts(FUNGSI);
+  $('#t-status').innerHTML='<option value="">Semua status</option>'+opts(STATUS);
+  $('#f-blok').innerHTML=opts(BLOK); $('#f-fungsi').innerHTML=opts(FUNGSI); $('#f-tutupan').innerHTML=opts(TUTUPAN);
+  $('#f-kondisi').innerHTML=opts(KONDISI); $('#f-status').innerHTML=opts(STATUS); $('#f-risiko').innerHTML=opts(RISIKO);
+  $('#e-filter').innerHTML='<option value="">Semua jenis kejadian</option>'+opts(Object.keys(TIPE));
+  $('#e-tipe').innerHTML=opts(Object.keys(TIPE)); $('#e-status').innerHTML=opts(STATUS_EV);
+}
+function fillPetakSelects(){
+  const ids=S.petak.map(p=>p.id), keep=[$('#c-petak').value,$('#e-petak').value];
+  $('#c-petak').innerHTML=opts(ids,keep[0]); $('#e-petak').innerHTML=opts(ids,keep[1]);
+  $('#dl-petak').innerHTML=ids.map(i=>'<option value="'+esc(i)+'">').join('');
+}
+
+/* ---------- dialog petak ---------- */
+let editing=null;
+function openPetak(id){
+  const p=id?S.petak.find(x=>x.id===id):null; editing=p?p.id:null;
+  $('#dp-title').textContent=p?'Ubah petak '+p.id:'Tambah petak';
+  $('#f-id').value=p?p.id:''; $('#f-id').disabled=!!p;
+  $('#f-blok').value=p?p.blok:'B'; $('#f-fungsi').value=p?p.fungsi:FUNGSI[1]; $('#f-tutupan').value=p?p.tutupan:'Hutan sekunder';
+  $('#f-kondisi').value=p?p.kondisi:'Baik'; $('#f-jenis').value=p?p.jenis:''; $('#f-vol').value=p?p.vol:150;
+  $('#f-status').value=p?p.status:'Pemeliharaan'; $('#f-risiko').value=p?p.risiko:'Rendah'; $('#f-survei').value=p?p.survei:'2026-10';
+  $('#geo-new').style.display=p?'none':'grid'; $('#geo-note').style.display=p?'none':'block';
+  $('#f-lat').value=-3.0010; $('#f-lng').value=115.4500; $('#f-luas').value=100;
+  $('#dlg-petak').showModal();
+}
+function savePetak(){
+  const id=$('#f-id').value.trim().toUpperCase();
+  const vol=parseFloat($('#f-vol').value);
+  if(!id){ toast('Isi kode petak dulu'); return; }
+  if(isNaN(vol)||vol<0){ toast('Volume harus berupa angka 0 atau lebih'); return; }
+  const data={blok:$('#f-blok').value,fungsi:$('#f-fungsi').value,tutupan:$('#f-tutupan').value,kondisi:$('#f-kondisi').value,jenis:$('#f-jenis').value.trim()||'-',vol:vol,status:$('#f-status').value,risiko:$('#f-risiko').value,survei:$('#f-survei').value||'2026-10'};
+  if(editing){
+    Object.assign(S.petak.find(x=>x.id===editing),data); toast('Petak '+editing+' diperbarui');
+  }else{
+    if(S.petak.some(x=>x.id===id)){ toast('Kode petak '+id+' sudah dipakai'); return; }
+    const lat=parseFloat($('#f-lat').value), lng=parseFloat($('#f-lng').value), ha=parseFloat($('#f-luas').value);
+    if([lat,lng,ha].some(isNaN)||ha<=0){ toast('Lintang, bujur, dan luas harus diisi dengan benar'); return; }
+    const side=Math.sqrt(ha/100), dl=side/110.574/2, dg=side/(111.32*Math.cos(lat*Math.PI/180))/2;
+    const poly=[[lat-dl,lng-dg],[lat-dl,lng+dg],[lat+dl,lng+dg],[lat+dl,lng-dg]];
+    S.petak.push(Object.assign({id:id,poly:poly,luas:+areaHa(poly).toFixed(1),rkt:null},data)); toast('Petak '+id+' ditambahkan');
+  }
+  save(); $('#dlg-petak').close(); renderAll();
+}
+let delAction=null;
+function askDelete(text,fn){ $('#del-text').textContent=text; delAction=fn; $('#dlg-del').showModal(); }
+
+/* ---------- rencana ---------- */
+function renderPlan(){
+  const q=S.param, {e,years}=schedule();
+  $('#etat-res').innerHTML=[
+    [fmt(e.L,1),'ha hutan produksi yang bisa ditebang'],[fmt(e.V),'m³ kayu berdiri di hutan itu'],[fmt(e.etatLuas,1),'ha boleh ditebang per tahun'],
+    [fmt(e.vm),'m³/tahun batas dari stok kayu'],[fmt(e.vr),'m³/tahun batas dari pertumbuhan'],[fmt(e.kons),'m³/tahun batas tebang aman (dipakai)']
+  ].map((r,i)=>'<div class="res'+(i===5?' key':'')+'"><b>'+r[0]+'</b><span>'+r[1]+'</span></div>').join('');
+  const ys=Object.keys(years).map(Number).sort((a,b)=>a-b);
+  const y0=2027, y1=Math.max(2040,ys.length?ys[ys.length-1]:2040), labels=[];
+  for(let y=y0;y<=y1;y++) labels.push(y);
+  const over=y=>{ const o=years[y]; return o&&(o.ha>e.etatLuas*1.001||o.vol>e.kons*1.001); };
+  chart('c-plan',{data:{labels:labels,datasets:[
+    {type:'bar',label:'Volume tebang (m³)',data:labels.map(y=>years[y]?+years[y].vol.toFixed(0):0),backgroundColor:labels.map(y=>over(y)?'#D0623A':'#5E9C6B'),borderRadius:3},
+    {type:'line',label:'Batas tebang aman (m³/tahun)',data:labels.map(()=>+e.kons.toFixed(0)),borderColor:'#16312A',borderDash:[6,4],pointRadius:0,borderWidth:2}
+  ]},options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},scales:{x:noGrid}}});
+  $('#tbl-year tbody').innerHTML=ys.map(y=>{ const o=years[y], ov=over(y);
+    return '<tr><td><b>'+y+'</b></td><td>'+o.petak.map(esc).join(', ')+'</td><td class="num">'+fmt(o.ha,1)+'</td><td class="num">'+fmt(o.vol)+'</td><td>'+(ov?badge('Melebihi batas','#D0623A'):badge('Dalam batas','#3F8F5B'))+'</td></tr>'; }).join('')||'<tr><td colspan="5" class="empty">Belum ada petak yang dijadwalkan.</td></tr>';
+  const prod=S.petak.filter(p=>p.fungsi!=='Hutan Lindung'&&FOREST.indexOf(p.tutupan)>=0&&p.tutupan!=='Bekas tebangan').sort((a,b)=>a.id.localeCompare(b.id));
+  const yrs=[]; for(let y=2027;y<=2045;y++) yrs.push(y);
+  $('#tbl-rkt tbody').innerHTML=prod.map(p=>'<tr><td><b>'+esc(p.id)+'</b></td><td>'+esc(p.fungsi)+'</td><td class="num">'+fmt(p.luas,1)+'</td><td class="num">'+fmt(p.vol)+'</td><td>'+badge(p.status,COL.status[p.status]||'#888')+'</td><td><select data-rkt="'+esc(p.id)+'" aria-label="Tahun mulai tebang '+esc(p.id)+'"><option value="">Belum dijadwalkan</option>'+yrs.map(y=>'<option'+(p.rkt===y?' selected':'')+'>'+y+'</option>').join('')+'</select></td></tr>').join('')||'<tr><td colspan="6" class="empty">Tidak ada petak produksi yang berhutan.</td></tr>';
+}
+
+/* ---------- inventarisasi ---------- */
+const volPohon=(d,t,f)=>0.25*Math.PI*Math.pow(d/100,2)*t*f;
+function calcLive(){
+  const d=parseFloat($('#c-d').value)||0,h=parseFloat($('#c-h').value)||0,f=parseFloat($('#c-f').value)||0,n=parseInt($('#c-n').value)||0;
+  const v=volPohon(d,h,f); $('#c-v1').textContent=fmt(v,3); $('#c-v2').textContent=fmt(v*n,3);
+}
+function renderCruise(){
+  const rows=S.cruise;
+  $('#tbl-c tbody').innerHTML=rows.map((r,i)=>'<tr><td><b>'+esc(r.petak)+'</b></td><td>'+esc(r.jenis)+'</td><td class="num">'+r.n+'</td><td class="num">'+fmt(r.d,1)+'</td><td class="num">'+fmt(r.h,1)+'</td><td class="num">'+fmt(r.f,2)+'</td><td class="num">'+fmt(volPohon(r.d,r.h,r.f)*r.n,2)+'</td><td><button class="btn sm" data-cdel="'+i+'">Hapus</button></td></tr>').join('')||'<tr><td colspan="8" class="empty">Belum ada data. Isi kalkulator di atas lalu simpan ke risalah.</td></tr>';
+  const tv=sum(rows,r=>volPohon(r.d,r.h,r.f)*r.n), tn=sum(rows,r=>r.n);
+  $('#c-sum').textContent=rows.length?tn+' pohon dari '+new Set(rows.map(r=>r.petak)).size+' petak, total volume '+fmt(tv,2)+' m³.':'Catatan hasil pengukuran pohon per petak.';
+}
+
+/* ---------- monitoring ---------- */
+function renderIndSummary(){
+  const idx=idxPHL(), pr=predikat(idx);
+  $('#idx-val').textContent=fmt(idx,0); $('#idx-pred').innerHTML=badge(pr[0],pr[1]);
+  const av=ASPEK.map(a=>{ const v=IND.map((x,i)=>x[0]===a?S.ind[i]:null).filter(v=>v!==null); return +(v.reduce((s,x)=>s+x,0)/v.length).toFixed(1); });
+  ASPEK.forEach((a,i)=>{ const el=$('#asp-'+a); if(el) el.textContent=fmt(av[i],0); });
+  chart('c-asp',{type:'bar',data:{labels:ASPEK,datasets:[{data:av,backgroundColor:['#C9A24A','#3F8F5B','#2E6FB5'],borderRadius:4}]},options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{min:0,max:100},y:noGrid}}});
+}
+function buildInd(){
+  let h='';
+  ASPEK.forEach(a=>{
+    h+='<div class="group-h"><span>Aspek '+a.toLowerCase()+'</span><span id="asp-'+a+'"></span></div>';
+    IND.forEach((x,i)=>{ if(x[0]!==a) return;
+      h+='<div class="slider"><label for="ind'+i+'">'+esc(x[1])+'</label><input type="range" id="ind'+i+'" data-ind="'+i+'" min="0" max="100" value="'+S.ind[i]+'"><output id="out'+i+'">'+S.ind[i]+'</output></div>'; });
+  });
+  $('#ind-list').innerHTML=h;
+}
+function renderEvents(){
+  const f=$('#e-filter').value;
+  const rows=S.kejadian.filter(e=>!f||e.tipe===f).sort((a,b)=>b.tgl.localeCompare(a.tgl));
+  $('#tbl-e tbody').innerHTML=rows.map(e=>'<tr><td>'+fdate(e.tgl)+'</td><td>'+badge(e.tipe,TIPE[e.tipe]||'#555')+'</td><td><b>'+esc(e.petak)+'</b></td><td style="white-space:normal;min-width:240px">'+esc(e.ket)+'</td><td>'+badge(e.status,EV_COL[e.status]||'#888')+'</td><td><div class="rowact"><button class="btn sm" data-emap="'+esc(e.petak)+'">Peta</button><button class="btn sm" data-edel="'+esc(e.id)+'">Hapus</button></div></td></tr>').join('')||'<tr><td colspan="6" class="empty">Belum ada kejadian.</td></tr>';
+}
+
+/* ---------- render semua + navigasi ---------- */
+function renderAll(){
+  fillPetakSelects(); renderDashboard(); renderTable(); renderPlan(); renderCruise(); renderIndSummary(); renderEvents(); calcLive();
+  if(map) drawMap();
+}
+let current='dashboard';
+function go(v,opt){
+  opt=opt||{}; current=v;
+  $$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+  $$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===v));
+  if(v==='peta'){
+    initMap();
+    setTimeout(()=>{ if(map){ map.invalidateSize(); if(opt.id) selectPetak(opt.id,true); } },80);
+  }
+  window.scrollTo(0,0); const m=$('.main'); if(m&&m.scrollTo) m.scrollTo(0,0);
+}
+
+/* ---------- event listeners ---------- */
+document.addEventListener('click',function(ev){
+  const t=ev.target.closest('[data-go],[data-ev],[data-map],[data-edit],[data-del],[data-zoom],[data-cdel],[data-emap],[data-edel],[data-base]');
+  if(!t) return;
+  if(t.dataset.go&&!t.closest('#nav')&&!t.dataset.ev){ go(t.dataset.go); return; }
+  if(t.closest('#nav')){ go(t.dataset.go); return; }
+  if(t.dataset.ev){ go('peta',{id:t.dataset.ev}); return; }
+  if(t.dataset.map||t.dataset.emap){ go('peta',{id:t.dataset.map||t.dataset.emap}); return; }
+  if(t.dataset.edit){ openPetak(t.dataset.edit); return; }
+  if(t.dataset.zoom){ selectPetak(t.dataset.zoom,true); return; }
+  if(t.dataset.del){ const id=t.dataset.del; askDelete('Petak '+id+' beserta kejadian dan risalah cruising-nya akan dihapus. Tindakan ini tidak bisa dibatalkan.',()=>{ S.petak=S.petak.filter(p=>p.id!==id); S.kejadian=S.kejadian.filter(e=>e.petak!==id); S.cruise=S.cruise.filter(c=>c.petak!==id); if(selId===id) selId=null; save(); renderAll(); toast('Petak '+id+' dihapus'); }); return; }
+  if(t.dataset.cdel!==undefined){ S.cruise.splice(+t.dataset.cdel,1); save(); renderCruise(); return; }
+  if(t.dataset.edel){ const id=t.dataset.edel; S.kejadian=S.kejadian.filter(e=>e.id!==id); save(); renderAll(); toast('Kejadian dihapus'); return; }
+  if(t.dataset.base&&map){
+    $$('#m-base button').forEach(b=>b.classList.toggle('on',b===t));
+    map.removeLayer(base[map._base]); base[t.dataset.base].addTo(map); base[t.dataset.base].bringToBack(); map._base=t.dataset.base;
+  }
+});
+$('#schema').addEventListener('click',function(ev){ const p=ev.target.closest('polygon'); if(p) go('peta',{id:p.dataset.id}); });
+$('#m-mode').addEventListener('change',drawMap);
+['m-l-petak','m-l-label','m-l-ev'].forEach(id=>$('#'+id).addEventListener('change',drawMap));
+function findPetak(){ const q=$('#m-q').value.trim().toUpperCase(); if(!q) return; if(S.petak.some(p=>p.id===q)) selectPetak(q,true); else toast('Petak '+q+' tidak ditemukan'); }
+$('#m-find').addEventListener('click',findPetak);
+$('#m-q').addEventListener('keydown',e=>{ if(e.key==='Enter') findPetak(); });
+$('#m-move').addEventListener('click',()=>{ if(!map) return; moving=true; map.getContainer().style.cursor='crosshair'; toast('Klik di peta untuk menaruh pusat kawasan'); });
+$('#m-all').addEventListener('click',()=>{ selId=null; styleSel(); renderInspector(); fitAll(); });
+$('#t-q').addEventListener('input',e=>{ tbl.q=e.target.value; renderTable(); });
+['blok','fungsi','status'].forEach(k=>$('#t-'+k).addEventListener('change',e=>{ tbl[k]=e.target.value; renderTable(); }));
+$$('#tbl th[data-k]').forEach(th=>th.addEventListener('click',()=>{ const k=th.dataset.k; if(tbl.k===k) tbl.dir*=-1; else{ tbl.k=k; tbl.dir=1; } renderTable(); }));
+$('#t-add').addEventListener('click',()=>openPetak(null));
+$('#dp-cancel').addEventListener('click',()=>$('#dlg-petak').close());
+$('#dp-save').addEventListener('click',savePetak);
+$('#del-cancel').addEventListener('click',()=>$('#dlg-del').close());
+$('#del-ok').addEventListener('click',()=>{ $('#dlg-del').close(); if(delAction) delAction(); delAction=null; });
+$('#t-csv').addEventListener('click',()=>{
+  const head=['Petak','Blok','Fungsi','Luas_ha','Tutupan','Kondisi','Jenis_dominan','Volume_m3_per_ha','Potensi_m3','Status','Risiko_api','Survei','Mulai_tebang'];
+  const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+  const lines=[head.join(',')].concat(S.petak.map(p=>[p.id,p.blok,p.fungsi,p.luas,p.tutupan,p.kondisi,p.jenis,p.vol,Math.round(potensi(p)),p.status,p.risiko,p.survei,p.rkt||''].map(q).join(',')));
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8'})); a.download='data-petak-banua-lestari.csv'; document.body.appendChild(a); a.click(); a.remove(); toast('CSV diunduh');
+});
+// rencana
+[['p-daur','daur'],['p-riap','riap'],['p-vt','vt']].forEach(x=>{ $('#'+x[0]).value=S.param[x[1]]; $('#'+x[0]).addEventListener('input',e=>{ const v=parseFloat(e.target.value); if(v>0){ S.param[x[1]]=v; save(); renderPlan(); } }); });
+$('#tbl-rkt').addEventListener('change',e=>{ const s=e.target.closest('select[data-rkt]'); if(!s) return; const p=S.petak.find(x=>x.id===s.dataset.rkt); p.rkt=s.value?+s.value:null; save(); renderPlan(); if(map) drawMap(); });
+// inventarisasi
+['c-d','c-h','c-f','c-n'].forEach(id=>$('#'+id).addEventListener('input',calcLive));
+$('#c-add').addEventListener('click',()=>{
+  const r={petak:$('#c-petak').value,jenis:$('#c-jenis').value.trim()||'Tidak diisi',d:parseFloat($('#c-d').value),h:parseFloat($('#c-h').value),f:parseFloat($('#c-f').value),n:parseInt($('#c-n').value)};
+  if(!r.petak||[r.d,r.h,r.f,r.n].some(isNaN)||r.d<=0||r.h<=0||r.n<1){ toast('Lengkapi petak, diameter, tinggi, angka bentuk, dan jumlah pohon'); return; }
+  S.cruise.push(r); save(); renderCruise(); toast('Tersimpan ke risalah');
+});
+// monitoring
+$('#ind-list').addEventListener('input',e=>{ const i=e.target.dataset.ind; if(i===undefined) return; S.ind[i]=+e.target.value; $('#out'+i).textContent=e.target.value; save(); renderIndSummary(); renderDashboard(); });
+$('#e-filter').addEventListener('change',renderEvents);
+$('#e-add').addEventListener('click',()=>{ $('#e-tgl').value=new Date().toISOString().slice(0,10); $('#e-ket').value=''; $('#dlg-ev').showModal(); });
+$('#e-cancel').addEventListener('click',()=>$('#dlg-ev').close());
+$('#e-save').addEventListener('click',()=>{
+  const pid=$('#e-petak').value, p=S.petak.find(x=>x.id===pid), ket=$('#e-ket').value.trim(), tgl=$('#e-tgl').value;
+  if(!p){ toast('Pilih petak dulu'); return; }
+  if(!ket||!tgl){ toast('Isi tanggal dan keterangan'); return; }
+  const c=centroid(p.poly);
+  S.kejadian.push({id:'e'+Date.now(),tipe:$('#e-tipe').value,petak:pid,tgl:tgl,ket:ket,status:$('#e-status').value,lat:c[0]+(Math.random()-.5)*0.003,lng:c[1]+(Math.random()-.5)*0.003});
+  save(); $('#dlg-ev').close(); renderAll(); toast('Kejadian dicatat, titiknya tampil di peta');
+});
+
+/* ---------- mulai ---------- */
+fillFilters(); buildInd(); renderAll();
+})();
+</script>
+
+
+</body></html>
